@@ -110,11 +110,11 @@ body {
 /********* Jumbotron Ends***********/
 
 /********* Category Begins***********/
-#category-tile:hover {
+.category-tile:hover {
   box-shadow: 0 1px 5px 1px #192841;
 }
 
-#category-tile {
+.category-tile {
   background: url("https://images.propertycasualty360.com/contrib/content/uploads/sites/414/2020/06/Sexual-assault-Shutterstock.jpg")
     no-repeat;
   background-position: center;
@@ -128,7 +128,7 @@ body {
   border-radius: 5px;
 }
 
-#category-tile span {
+.category-tile span {
   /* font-family: "Sniglet", sans-serif; */
   position: absolute;
   bottom: 0;
@@ -156,6 +156,26 @@ body {
 .seeMore a:hover {
   text-decoration: none;
 }
+
+.experienceTile {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.experienceTitle {
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .experienceTile {
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  .experienceTitle {
+    text-align: left;
+  }
+}
 /********* Category Ends***********/
 /********* Main Content Ends***********/
 
@@ -182,6 +202,7 @@ body {
   background: #e7e7e7;
   color: #292b2c;
 }
+
 /* END FOOTER */
 
 /******Large Devices Only*****/
