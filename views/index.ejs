@@ -81,30 +81,32 @@
       <hr>
       <h3>Categories</h3>
       <div class="row">
-        <%for(let i =0; i <=2; i++){%>
+        <% categoryList.forEach(function(category){ %>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <a href="#" onclick="">
+            <a href = "/categories:#domesticViolenceCategory" onclick="">
               <div class="category-tile">
-                <span>Sexual Assault</span>
+                <img src="<%= category.image%>", alt="<%= category.title%> Image", class="categoryImage">
+                <span><%=category.title%></span>
               </div>
             </a>
           </div>
-        <%}%>
+        <%})%>
       </div>
       <div class="seeMore"><a href="#">See More</a></div>
 
     <hr>
       <h3>Safety Tips</h3>
       <div class="row">
-        <%for(let i =0; i <=1; i++){%>
+        <% categoryList.forEach(function(category){ %>
           <div class="col-md-6 col-sm-6 col-xs-12">
             <a href="#" onclick="">
               <div class="category-tile">
-                <span>Sexual Assault</span>
+                <img src="<%= category.image%>", alt="<%= category.title%> Image", class="categoryImage">
+                <span><%=category.title%></span>
               </div>
             </a>
           </div>
-        <%}%>
+        <%})%>
       </div>
 
     <hr>

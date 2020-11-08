@@ -128,6 +128,10 @@ body {
   border-radius: 5px;
 }
 
+.categoryImage {
+  height: 250px;
+  width: 100%;
+}
 .category-tile span {
   /* font-family: "Sniglet", sans-serif; */
   position: absolute;
@@ -210,7 +214,7 @@ body {
   .container .jumbotron {
     background: url("https://table-31.com/wp-content/uploads/2018/07/Criminal-Law0.jpg")
       no-repeat;
-    height: 675px;
+    height: 500px;
     margin-top: 20px;
     margin-bottom: 25px;
     position: relative;
