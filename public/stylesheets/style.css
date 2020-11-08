@@ -1,220 +1,228 @@
 body {
-  font-size: 16px;
-  color: #292b2c;
-  font-family: "Oxygen", sans-serif;
-}
-
-/********* Navbar Begins***********/
-#navBar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 999;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
-}
-.navbar-brand {
-  padding-top: 25px;
-}
-
-.navbar-brand h1 {
-  font-family: "Sniglet", cursive;
-  color: #fff;
-  font-size: 1.2em;
-  text-transform: uppercase;
-  margin-top: 0px;
-  margin-bottom: 0;
-  line-height: 0.75;
-}
-
-.block-display button {
-  margin-bottom: 5px;
-  display: block;
-}
-.block-display div {
-  margin-bottom: 5px;
-  display: block;
-}
-
-.logInButton {
-  width: 70px;
-}
-.navbar-brand a:hover,
-.navbar-brand a:focus {
-  text-decoration: none;
-}
-
-.navbar-brand h4 {
-  color: #fff;
-  font-size: 0.75em;
-  text-transform: uppercase;
-  margin-top: 10px;
-}
-#nav-list a:hover {
-  background: #e7e7e7;
-  color: #292b2c;
-}
-
-.navbar-default .navbar-toggle {
-  border-color: #192841;
-}
-
-.navbar-header button,
-.navbar-toggle,
-.navbar-header .icon-bar {
-  border: 1px solid #192841;
-}
-
-.navbar-header button.navbar-toggle {
-  clear: both;
-  margin-top: -30px;
-}
-/********* Navbar Ends***********/
-
-/********* Main Content Begins***********/
-.mainContent {
-  margin-top: 150px;
-}
-
-/********* Jumbotron Begins***********/
-.gradient:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: inline-block;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 0.5914740896358543) 30%,
-    rgba(0, 212, 255, 1) 90%
-  );
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
-}
-
-.jumbotronContent {
-  position: relative;
-}
-
-.descriptionText {
-  position: absolute;
-  left: 25%;
-  top: 20%;
-  text-align: center;
-  color: white;
-  padding: 20px;
-  border-style: solid;
-}
-/********* Jumbotron Ends***********/
-
-/********* Category Begins***********/
-.category-tile:hover {
-  box-shadow: 0 1px 5px 1px #192841;
-}
-
-.category-tile {
-  background: url("https://images.propertycasualty360.com/contrib/content/uploads/sites/414/2020/06/Sexual-assault-Shutterstock.jpg")
-    no-repeat;
-  background-position: center;
-  height: 250px;
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  position: relative;
-  border: 1px solid #5ab9ea;
-  overflow: hidden;
-  border-radius: 5px;
-}
-
-.category-tile span {
-  /* font-family: "Sniglet", sans-serif; */
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  text-align: center;
-  font-size: 1.6em;
-  text-transform: uppercase;
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 0.5914740896358543) 30%,
-    rgba(0, 212, 255, 1) 90%
-  );
-  color: #fff;
-  opacity: 0.8;
-}
-
-.seeMore {
-  margin-bottom: 20px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.seeMore a:hover {
-  text-decoration: none;
-}
-
-.experienceTile {
-  margin: 0 auto;
-  width: 50%;
-}
-
-.experienceTitle {
-  text-align: center;
-}
-
-@media (max-width: 767px) {
-  .experienceTile {
-    margin-top: 15px;
+    font-size: 16px;
+    color: #292b2c;
+    font-family: "Oxygen", sans-serif;
+  }
+  
+  /********* Navbar Begins***********/
+  #navBar {
+    position: fixed;
+    top: 0;
     width: 100%;
+    z-index: 999;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
   }
-
-  .experienceTitle {
-    text-align: left;
+  .navbar-brand {
+    padding-top: 25px;
   }
-}
-/********* Category Ends***********/
-/********* Main Content Ends***********/
-
-/*FOOTER*/
-.panel-footer {
-  margin-top: 30px;
-  padding-top: 35px;
-  padding-bottom: 30px;
-  background-color: #0275d8;
-  color: #fff;
-  border-top: 0;
-}
-
-.panel-footer div.row {
-  margin-bottom: 35px;
-}
-
-.socialMediaIcons {
-  color: white;
-  padding: 5px;
-}
-
-.socialMediaIcons:hover {
-  background: #e7e7e7;
-  color: #292b2c;
-}
-
-/* END FOOTER */
-
-/******Large Devices Only*****/
-@media (min-width: 1200px) {
-  .container .jumbotron {
+  
+  .navbar-brand h1 {
+    font-family: "Sniglet", cursive;
+    color: #fff;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    margin-top: 0px;
+    margin-bottom: 0;
+    line-height: 0.75;
+  }
+  
+  .block-display button {
+    margin-bottom: 5px;
+    display: block;
+  }
+  .block-display div {
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .logInButton {
+    width: 70px;
+  }
+  .navbar-brand a:hover,
+  .navbar-brand a:focus {
+    text-decoration: none;
+  }
+  
+  .navbar-brand h4 {
+    color: #fff;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+  #nav-list a:hover {
+    background: #e7e7e7;
+    color: #292b2c;
+  }
+  
+  .navbar-default .navbar-toggle {
+    border-color: #192841;
+  }
+  
+  .navbar-header button,
+  .navbar-toggle,
+  .navbar-header .icon-bar {
+    border: 1px solid #192841;
+  }
+  
+  .navbar-header button.navbar-toggle {
+    clear: both;
+    margin-top: -30px;
+  }
+  /********* Navbar Ends***********/
+  
+  /********* Main Content Begins***********/
+  .mainContent {
+    margin-top: 150px;
+  }
+  
+  /********* Jumbotron Begins***********/
+  .gradient:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(9, 9, 121, 0.5914740896358543) 30%,
+      rgba(0, 212, 255, 1) 90%
+    );
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .container .jumbotron{
     background: url("https://table-31.com/wp-content/uploads/2018/07/Criminal-Law0.jpg")
-      no-repeat;
-    height: 675px;
-    margin-top: 20px;
-    margin-bottom: 25px;
-    position: relative;
-    /*box-shadow: 0 0 50px #77c3ec;
-        border: 2px solid #77c3ec;*/
+    no-repeat;
+  height: 675px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  position: relative;
   }
-}
+  .jumbotronContent {
+    position: relative;
+  }
+  
+  .descriptionText {
+    position: absolute;
+    left: 25%;
+    top: 20%;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    border-style: solid;
+  }
+  /********* Jumbotron Ends***********/
+  
+  /********* Category Begins***********/
+  .category-tile:hover {
+    box-shadow: 0 1px 5px 1px #192841;
+  }
+  
+  .category-tile {
+    background: url("https://images.propertycasualty360.com/contrib/content/uploads/sites/414/2020/06/Sexual-assault-Shutterstock.jpg")
+      no-repeat;
+    background-position: center;
+    height: 250px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    position: relative;
+    border: 1px solid #5ab9ea;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+  
+  .category-tile span {
+    /* font-family: "Sniglet", sans-serif; */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(9, 9, 121, 0.5914740896358543) 30%,
+      rgba(0, 212, 255, 1) 90%
+    );
+    color: #fff;
+    opacity: 0.8;
+  }
+  
+  .seeMore {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .seeMore a:hover {
+    text-decoration: none;
+  }
+  
+  .experienceTile {
+    margin: 0 auto;
+    width: 50%;
+  }
+  
+  .experienceTitle {
+    text-align: center;
+  }
+  
+  @media (max-width: 767px) {
+    .experienceTile {
+      margin-top: 15px;
+      width: 100%;
+    }
+  
+    .experienceTitle {
+      text-align: left;
+    }
+  }
+  /********* Category Ends***********/
+  /********* Main Content Ends***********/
+  
+  /*FOOTER*/
+  .panel-footer {
+    margin-top: 30px;
+    padding-top: 35px;
+    padding-bottom: 30px;
+    background-color: #0275d8;
+    color: #fff;
+    border-top: 0;
+  }
+  
+  .panel-footer div.row {
+    margin-bottom: 35px;
+  }
+  
+  .socialMediaIcons {
+    color: white;
+    padding: 5px;
+  }
+  
+  .socialMediaIcons:hover {
+    background: #e7e7e7;
+    color: #292b2c;
+  }
+  
+  /* END FOOTER */
+  
+  /******Large Devices Only*****/
+  /* @media (min-width: 1200px) {
+    .container .jumbotron {
+      background: url("https://table-31.com/wp-content/uploads/2018/07/Criminal-Law0.jpg")
+        no-repeat;
+      height: 675px;
+      margin-top: 20px;
+      margin-bottom: 25px;
+      position: relative;
+      /*box-shadow: 0 0 50px #77c3ec;
+          border: 2px solid #77c3ec;*/
+    /* }
+  } */  
