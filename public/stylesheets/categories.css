@@ -1,0 +1,70 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+  
+  a {
+    color: #00B7FF;
+  }
+  
+.card-text{
+  
+    position: absolute; 
+    bottom: 8px;
+    left: 2px;
+    text-align: center;
+    font-size: x-large;
+    color: white;
+    width: 340px;
+  }
+  
+  .card{
+    margin-bottom: 30px;
+    padding-left: 30px;
+    width: 33%;
+    float: left;
+    border-style: none!important; 
+    background-color: transparent;
+  }
+
+  .category-tile:hover {
+    box-shadow: 0 1px 5px 1px #192841;
+  }
+  
+  .category-tile {
+    /* background: url("https://images.propertycasualty360.com/contrib/content/uploads/sites/414/2020/06/Sexual-assault-Shutterstock.jpg")
+      no-repeat; */
+    background-position: center;
+    height: 250px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    position: relative;
+    border: 1px solid #5ab9ea;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+  
+  .category-tile span {
+    /* font-family: "Sniglet", sans-serif; */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(9, 9, 121, 0.5914740896358543) 30%,
+      rgba(0, 212, 255, 1) 90%
+    );
+    color: #fff;
+    opacity: 0.8;
+  }
+
+  .images{
+    height: 250px;
+    width: 100%;
+  }
