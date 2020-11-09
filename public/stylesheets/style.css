@@ -191,6 +191,8 @@ body {
   .experienceTile {
     margin-top: 15px;
     width: 100%;
+    z-index: 999;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
   }
 
   .experienceTitle {
@@ -232,12 +234,116 @@ body {
   .container .jumbotron {
     background: url("https://table-31.com/wp-content/uploads/2018/07/Criminal-Law0.jpg")
       no-repeat;
+    height: 675px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    position: relative;
+  }
+  .jumbotronContent {
+    position: relative;
+  }
+
+  .descriptionText {
+    position: absolute;
+    left: 25%;
+    top: 20%;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    border-style: solid;
+  }
+  /********* Jumbotron Ends***********/
+
+  /********* Category Begins***********/
+  .category-tile:hover {
+    box-shadow: 0 1px 5px 1px #192841;
+  }
+
+  .category-tile {
+    background: url("https://images.propertycasualty360.com/contrib/content/uploads/sites/414/2020/06/Sexual-assault-Shutterstock.jpg")
+      no-repeat;
     height: 500px;
     margin-top: 20px;
     margin-bottom: 25px;
     position: relative;
-    /*box-shadow: 0 0 50px #77c3ec;
-        border: 2px solid #77c3ec;*/
+    border: 1px solid #5ab9ea;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+
+  .category-tile span {
+    /* font-family: "Sniglet", sans-serif; */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(9, 9, 121, 0.5914740896358543) 30%,
+      rgba(0, 212, 255, 1) 90%
+    );
+    color: #fff;
+    opacity: 0.8;
+  }
+
+  .seeMore {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .seeMore a:hover {
+    text-decoration: none;
+  }
+
+  .experienceTile {
+    margin: 0 auto;
+    width: 50%;
+  }
+
+  .experienceTitle {
+    text-align: center;
+  }
+
+  @media (max-width: 767px) {
+    .experienceTile {
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    .experienceTitle {
+      text-align: left;
+    }
+  }
+  /********* Category Ends***********/
+  /********* Main Content Ends***********/
+
+  /*FOOTER*/
+  .panel-footer {
+    margin-top: 30px;
+    padding-top: 35px;
+    padding-bottom: 30px;
+    background-color: #0275d8;
+    color: #fff;
+    border-top: 0;
+  }
+
+  .panel-footer div.row {
+    margin-bottom: 35px;
+  }
+
+  .socialMediaIcons {
+    color: white;
+    padding: 5px;
+  }
+
+  .socialMediaIcons:hover {
+    background: #e7e7e7;
+    color: #292b2c;
   }
 
   #searchBar {

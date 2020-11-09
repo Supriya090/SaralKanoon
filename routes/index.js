@@ -27,12 +27,26 @@ router.get('/', async function(req, res, next) {
   res.render('index', { title: 'Saral Kanoon', subTitle:'Law Made Easy', categoryList: categories, safetyTipList: safetyTips });
 });
 
+// Get to Category Page
 router.get('/categories', function(req, res, next){
   res.render('categories',{title:'Category'});
 });
 
+<<<<<<< HEAD
 router.get('/single-category', function(req, res, next){
   res.render('singleCategory',{title:'Single Category'});
 });
+=======
+router.get('/login', function(req, res, next){
+  res.render('login',{title:'Login'});
+});
+
+router.get('/signup', function(req, res, next){
+  res.render('signup',{title:'Sign Up'});
+});
+
+
+
+>>>>>>> Deena-branch
 
 module.exports = router;
