@@ -2,6 +2,8 @@ body {
   font-size: 16px;
   color: #292b2c;
   font-family: "Oxygen", sans-serif;
+  background: url("https://www.solidbackgrounds.com/images/1920x1080/1920x1080-light-blue-solid-color-background.jpg");
+  background-size: cover;
 }
 
 /********* Navbar Begins***********/
@@ -38,6 +40,11 @@ body {
 
 .logInButton {
   width: 70px;
+}
+
+#navBar {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQfxjX57MZUq2EqUUvsG4pXrGGfR_bovvJQIw&usqp=CAU");
+  background-size: cover;
 }
 .navbar-brand a:hover,
 .navbar-brand a:focus {
@@ -198,7 +205,8 @@ body {
   margin-top: 30px;
   padding-top: 35px;
   padding-bottom: 30px;
-  background-color: #0275d8;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQfxjX57MZUq2EqUUvsG4pXrGGfR_bovvJQIw&usqp=CAU");
+  background-size: cover;
   color: #fff;
   border-top: 0;
 }
