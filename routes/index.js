@@ -32,11 +32,9 @@ router.get('/categories', function(req, res, next){
   res.render('categories',{title:'Category'});
 });
 
-<<<<<<< HEAD
 router.get('/single-category', function(req, res, next){
   res.render('singleCategory',{title:'Single Category'});
 });
-=======
 router.get('/login', function(req, res, next){
   res.render('login',{title:'Login'});
 });
@@ -47,6 +45,5 @@ router.get('/signup', function(req, res, next){
 
 
 
->>>>>>> Deena-branch
 
 module.exports = router;
