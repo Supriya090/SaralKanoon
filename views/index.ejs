@@ -62,7 +62,6 @@
               </form>
             </div>
           </div>
-<<<<<<< HEAD
 
           <!-- Toggle Buttom Section -->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
@@ -71,35 +70,50 @@
 
           <!-- Login/SignUp Section -->
           <div class="navbar-brand block-display d-none d-lg-block">
-            <button type="button" class="btn btn-secondary btn-sm logInButton">Log In</button>
-            <button type="button" class="btn btn-secondary btn-sm logInButton">Sign Up</button>
-=======
-          <div class="navbar-brand block-display">
-            <a href="./login">
-              <button type="button" class="btn btn-secondary btn-sm logInButton">Log In</button>
-            </a>
-            <a href="./signup">
-              <button type="button" class="btn btn-secondary btn-sm logInButton">Sign Up</button>
-            </a>
->>>>>>> Deena-branch
+            <a href="/login"><button type="button" class="btn btn-secondary btn-sm logInButton">Log In</button></a>
+            <a href="/signup"><button type="button" class="btn btn-secondary btn-sm logInButton">Sign Up</button></a>
           </div>
+
+          <style>
+            .show{
+              display: block;
+            }
+          </style>
           <!-- Login Dropdown Section -->
           <div class="dropdown d-block  d-lg-none">
-            <a href="#" class="dropdown-toggle dropdownIcon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-            <ul class="dropdown-menu" style="color: #ffffff;">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li role="separator" class="divider"></li>
-              <li class="dropdown-header">Nav header</li>
-              <li><a href="#">Separated link</a></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
+            <button onclick="myFunction()" class="dropbtn"><i class="fa fa-caret-down"></i></button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="/login">Log In</a>
+              <a href="/signup">Sign Up</a>
+            </div>
           </div>
         </div>
       </nav>
     </header>
 
+    <!-- Dropdown Script -->
+    <script>
+      /* When the user clicks on the button, 
+      toggle between hiding and showing the dropdown content */
+      function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+      
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+    </script>
+      
     <!-- Main Content Begins -->
     <div class="container mainContent">
 
