@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var request = require('request');
 let Categories = require("../models/categories");
 let SafetyTips = require("../models/safety")
 
@@ -47,9 +48,15 @@ router.get('/safetyTips1',function(req,res,next){
   res.render('safetyTips1',{title:"Safety Tips"});
 })
 
-router.get('/safetyTips2',function(req,res,next){
-  res.render('safetyTips2',{title:"Safety Tips"});
-})
 
+router.get('/safetyTips2',function(req,res,next){
+  request("https://supriya090.github.io/SafetyEquipAPI/safety-equip.json", function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+     var safetyEquipment = JSON.parse(body);
+    //  console.log(safetyEquipment);
+     res.render('safetyTips2',{title:"Saral Kanoon - Safety Equipments", safetyEquipmentList: safetyEquipment});
+    }
+  })
+})
 
 module.exports = router;

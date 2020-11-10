@@ -25,20 +25,20 @@
             <!-- Sexual Offence -->
             <div>
                 <div class="row">
-                    <%for(let i =0; i <=10; i++){%>
+                    <%safetyEquipmentList.forEach(function(equipment){ %>
                       <div class="col-md-4 col-sm-6 col-xs-12 equipDiv">
                           <div class="category-tile equip-tile">
-                            <img src="https://www.nydailynews.com/resizer/BnfR4cjvBcq9HV_X4fyzAScgSiA=/800x533/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/7CPMXCQXEJHKFO3RKB3RDIYZIA.jpg" style="width: 100%;">
-                            <span>Pepper Spray</span>
+                            <img src="<%= equipment.image%>" style="width: 100%; height: 100%;" alt="<%= equipment.title%> Image">
+                            <span><%= equipment.title%></span>
                           </div>
                         <div class="equipDescription">
                             <h4>How to Use?</h4>
-                            <p> Most pepper sprays release a stream and tend to have the highest range. They are most effective when sprayed across the eyes and nose in a horizontal motion.
+                            <p> <%= equipment.description%>
                             </p>
-                            <div class="seeMore"><a href="#" style="color: #7e57c2;">Learn More</a></div>
+                            <div class="seeMore"><a href="<%= equipment.link%>" style="color: #7e57c2;" target="blank">Learn More</a></div>
                         </div>
                       </div>
-                    <%}%>
+                    <%})%>
                   </div>
                   <hr>
             </div>
