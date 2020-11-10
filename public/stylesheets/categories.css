@@ -1,6 +1,8 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: url("http://www.pngmagic.com/product_images/light-yellow-background.jpg");
+  background-size: cover;
 }
 
 a {
@@ -31,15 +33,13 @@ a {
 }
 
 .category-tile {
-  /* background: url("https://images.propertycasualty360.com/contrib/content/uploads/sites/414/2020/06/Sexual-assault-Shutterstock.jpg")
-      no-repeat; */
   background-position: center;
   height: 250px;
   width: 100%;
   margin-top: 10px;
   margin-bottom: 15px;
   position: relative;
-  border: 1px solid #5ab9ea;
+  border: 1px solid #7e57c2;
   overflow: hidden;
   border-radius: 5px;
 }
@@ -51,13 +51,13 @@ a {
   right: 0;
   width: 100%;
   text-align: center;
-  font-size: 1.6em;
+  font-size: 1.4em;
   text-transform: uppercase;
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 0.5914740896358543) 30%,
-    rgba(0, 212, 255, 1) 90%
+  background: rgb(142, 36, 170);
+  background: radial-gradient(
+    circle,
+    rgba(142, 36, 170, 0.7315301120448179) 0%,
+    rgba(60, 20, 140, 1) 87%
   );
   color: #fff;
   opacity: 0.8;
@@ -66,4 +66,26 @@ a {
 .images {
   height: 250px;
   width: 100%;
+}
+
+@media (max-width: 767px) {
+  .category-tile {
+    height: 175px;
+    margin: 0 auto 15px;
+  }
+
+  .category-tile span {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1199px) {
+  .category-tile {
+    height: 175px;
+    margin: 0 auto 15px;
+  }
+
+  .category-tile span {
+    font-size: 1rem;
+  }
 }

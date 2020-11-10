@@ -1,0 +1,38 @@
+.safety-nav {
+  padding: 15px;
+}
+.verticalDivider {
+  border-left: 2px solid #fff;
+  height: 45px;
+  position: absolute;
+  left: 50%;
+  top: 0;
+}
+
+.Left {
+  left: 0;
+}
+.Right {
+  right: 0;
+}
+
+#topBtn {
+  position: absolute;
+  color: white;
+  width: 50%;
+}
+
+#topBtn:hover {
+  color: black;
+  background-color: white;
+}
+
+.equipDiv {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.equip-tile:hover {
+  border-radius: 2px;
+  box-shadow: none;
+}

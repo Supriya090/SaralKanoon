@@ -20,7 +20,7 @@
           <div class="navbar-header">
             <a class="navbar-brand" href="#">
               <div class="d-none d-lg-block d-md-block">
-                <img src="/images/logo.png" width="100px" height="100px" alt="logo" loading="lazy" >
+                <img src="/images/logo.png" id="logo-img" alt="logo" loading="lazy" >
               </div>
             </a>
             <div class="navbar-brand">
@@ -40,7 +40,7 @@
                   <a class="nav-link" href="/categories">Categories <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Safety Tips <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="/safetyTips1">Safety Tips <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
                   <a class="nav-link" href="#">About Us <span class="sr-only">(current)</span></a>
@@ -129,9 +129,9 @@
       <hr>
       <h3>Categories</h3>
       <div class="row">
-        <% categoryList.forEach(function(category){ %>
+        <% categoryList.forEach(function(category, i){ %>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <a href = "/categories" onclick="">
+            <a href = "http://localhost:3000/categories#<%=i%>C" onclick="">
               <div class="category-tile">
                 <img src="<%= category.image%>", alt="<%= category.title%> Image", class="categoryImage">
                 <span><%=category.title%></span>
@@ -140,7 +140,7 @@
           </div>
         <%})%>
       </div>
-      <div class="seeMore"><a href="#">See More</a></div>
+      <div class="seeMore"><a href="/categories" class="moreLink">See More</a></div>
 
       <!-- Safety Tips Section -->
       <hr>

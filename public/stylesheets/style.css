@@ -2,7 +2,7 @@ body {
   font-size: 16px;
   color: #292b2c;
   font-family: "Oxygen", sans-serif;
-  background: url("https://www.solidbackgrounds.com/images/1920x1080/1920x1080-light-blue-solid-color-background.jpg");
+  background: url("http://www.pngmagic.com/product_images/light-yellow-background.jpg");
   background-size: cover;
 }
 
@@ -14,7 +14,7 @@ body {
   width: 100%;
   z-index: 999;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQfxjX57MZUq2EqUUvsG4pXrGGfR_bovvJQIw&usqp=CAU");
+  background-image: url("https://cutewallpaper.org/21/dark-purple-gradient-background/Dark-Purple-Backgrounds-on-WallpaperGetcom.jpg");
   background-size: cover;
 }
 .navbar-brand {
@@ -31,6 +31,10 @@ body {
   line-height: 0.75;
 }
 
+#logo-img {
+  width: 100px;
+  height: 100px;
+}
 .block-display button {
   margin-bottom: 5px;
   display: block;
@@ -121,6 +125,10 @@ body {
 .show {
   display: block;
 }
+
+#searchBar {
+  width: 85%;
+}
 /********* Navbar Ends***********/
 
 /********* Main Content Begins***********/
@@ -129,18 +137,28 @@ body {
 }
 
 /********* Jumbotron Begins***********/
+.container .jumbotron {
+  background: url("https://table-31.com/wp-content/uploads/2018/07/Criminal-Law0.jpg")
+    no-repeat;
+}
 .gradient:after {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
   display: inline-block;
-  background: rgb(2, 0, 36);
+  /* background: rgb(2, 0, 36);
   background: linear-gradient(
     90deg,
     rgba(2, 0, 36, 1) 0%,
     rgba(9, 9, 121, 0.5914740896358543) 30%,
     rgba(0, 212, 255, 1) 90%
+  ); */
+  background: rgb(234, 128, 252);
+  background: radial-gradient(
+    circle,
+    rgba(234, 128, 252, 0.4458158263305322) 0%,
+    rgba(74, 20, 140, 1) 100%
   );
   height: 100%;
   width: 100%;
@@ -154,7 +172,7 @@ body {
 .descriptionText {
   position: absolute;
   left: 25%;
-  top: 20%;
+  top: 30%;
   text-align: center;
   color: white;
   padding: 20px;
@@ -176,7 +194,7 @@ body {
   margin-top: 10px;
   margin-bottom: 15px;
   position: relative;
-  border: 1px solid #5ab9ea;
+  border: 1px solid #7e57c2;
   overflow: hidden;
   border-radius: 5px;
 }
@@ -192,13 +210,13 @@ body {
   right: 0;
   width: 100%;
   text-align: center;
-  font-size: 1.6em;
+  font-size: 1.4em;
   text-transform: uppercase;
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 0.5914740896358543) 30%,
-    rgba(0, 212, 255, 1) 90%
+  background: rgb(142, 36, 170);
+  background: radial-gradient(
+    circle,
+    rgba(142, 36, 170, 0.7315301120448179) 0%,
+    rgba(60, 20, 140, 1) 87%
   );
   color: #fff;
   opacity: 0.8;
@@ -231,7 +249,7 @@ body {
   margin-top: 30px;
   padding-top: 35px;
   padding-bottom: 30px;
-  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQfxjX57MZUq2EqUUvsG4pXrGGfR_bovvJQIw&usqp=CAU");
+  background: url("https://cutewallpaper.org/21/dark-purple-gradient-background/Dark-Purple-Backgrounds-on-WallpaperGetcom.jpg");
   background-size: cover;
   color: #fff;
   border-top: 0;
@@ -256,28 +274,105 @@ body {
 /******Large Devices Only*****/
 @media (min-width: 1200px) {
   .container .jumbotron {
-    background: url("https://table-31.com/wp-content/uploads/2018/07/Criminal-Law0.jpg")
-      no-repeat;
     height: 500px;
     margin-top: 20px;
     margin-bottom: 25px;
     position: relative;
   }
+}
+
+@media (max-width: 1199px) {
+  .container .jumbotron {
+    height: 400px;
+  }
+
+  .mainContent {
+    margin-top: 150px;
+  }
+
+  div .descriptionText {
+    font-size: 1rem;
+    left: 20%;
+    top: 25%;
+  }
 
   #searchBar {
+    font-size: 1rem;
     width: 85%;
+  }
+
+  #searchIcon {
+    font-size: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  .category-tile {
+    height: 200px;
+    margin: 0 auto 15px;
+  }
+
+  .category-tile span {
+    font-size: 1.2rem;
+  }
+
+  .experienceTile {
+    width: 60%;
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
+  #logo-img {
+    width: 90px;
+    height: 90px;
+  }
+
   .container .jumbotron {
-    background: url("https://table-31.com/wp-content/uploads/2018/07/Criminal-Law0.jpg")
-      no-repeat;
     height: 300px;
   }
 
   .mainContent {
+    margin-top: 140px;
+  }
+
+  div .descriptionText {
+    font-size: 1rem;
+    left: 10%;
+    top: 20%;
+  }
+
+  #searchBar {
+    font-size: 1rem;
+    width: 80%;
+  }
+
+  #searchIcon {
+    font-size: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  .category-tile {
+    height: 175px;
+    margin: 0 auto 15px;
+  }
+
+  .category-tile span {
+    font-size: 1.1rem;
+  }
+
+  .experienceTile {
+    width: 75%;
+  }
+}
+
+@media (max-width: 767px) {
+  .mainContent {
     margin-top: 120px;
+  }
+
+  .container .jumbotron {
+    height: 300px;
   }
 
   div .descriptionText {
@@ -296,11 +391,6 @@ body {
     font-size: 0.8rem;
     width: 35px;
     height: 35px;
-  }
-
-  .category-tile {
-    height: 175px;
-    margin: 0 auto 15px;
   }
 
   .category-tile span {

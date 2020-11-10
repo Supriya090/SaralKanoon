@@ -43,7 +43,13 @@ router.get('/signup', function(req, res, next){
   res.render('signup',{title:'Sign Up'});
 });
 
+router.get('/safetyTips1',function(req,res,next){
+  res.render('safetyTips1',{title:"Safety Tips"});
+})
 
+router.get('/safetyTips2',function(req,res,next){
+  res.render('safetyTips2',{title:"Safety Tips"});
+})
 
 
 module.exports = router;
