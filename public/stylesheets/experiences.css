@@ -1,17 +1,23 @@
 h3{
     margin-left: 70%;
-    margin-bottom: 30px;
-    /* position: sticky;
-    top:0;
-    padding:40px;
-    background: lightblue; */
+   
 }
 
 div{
     height: 300px;
     border: 1px solid black;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 5%;
 }
 p{
 
     margin-left: 80%;
+}
+
+body{
+    background:url("https://images.unsplash.com/photo-1535955565956-4a631184a821?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80")
+    no-repeat fixed;
+    background-size: cover;
+   
 }
