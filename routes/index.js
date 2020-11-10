@@ -20,6 +20,16 @@ router.get('/signup', function(req, res, next){
 });
 
 
+router.get('/experiences', function(req, res, next){
+  res.render('experiences',{title:'Experiences'});
+});
+
+
+router.get('/addExperience', function(req, res, next){
+  res.render('addExperience',{title:'Add Experiences'});
+});
+
+
 
 
 module.exports = router;

@@ -1,0 +1,17 @@
+h3{
+    margin-left: 70%;
+    margin-bottom: 30px;
+    /* position: sticky;
+    top:0;
+    padding:40px;
+    background: lightblue; */
+}
+
+div{
+    height: 300px;
+    border: 1px solid black;
+}
+p{
+
+    margin-left: 80%;
+}
