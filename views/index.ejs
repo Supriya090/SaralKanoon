@@ -146,9 +146,9 @@
       <hr>
       <h3>Safety Tips</h3>
       <div class="row">
-        <% safetyTipList.forEach(function(tip){ %>
+        <% safetyTipList.forEach(function(tip, i){ %>
           <div class="col-md-6 col-sm-6 col-xs-12">
-            <a href="#" onclick="">
+            <a href="/safetyTips<%=i%>" onclick="">
               <div class="category-tile">
                 <img src="<%= tip.image%>", alt="<%= tip.title%> Image", class="categoryImage">
                 <span><%=tip.title%></span>

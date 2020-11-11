@@ -22,26 +22,13 @@
           </nav>
     </header>
     <div class="container" style="margin-top: 60px;">
-            <!-- Sexual Offence -->
-            <div>
-                <div class="row">
-                    <%safetyEquipmentList.forEach(function(equipment){ %>
-                      <div class="col-md-4 col-sm-6 col-xs-12 equipDiv">
-                          <div class="category-tile equip-tile">
-                            <img src="<%= equipment.image%>" style="width: 100%; height: 100%;" alt="<%= equipment.title%> Image">
-                            <span><%= equipment.title%></span>
-                          </div>
-                        <div class="equipDescription">
-                            <h4>How to Use?</h4>
-                            <p> <%= equipment.description%>
-                            </p>
-                            <div class="seeMore"><a href="<%= equipment.link%>" style="color: #7e57c2;" target="blank">Learn More</a></div>
-                        </div>
-                      </div>
-                    <%})%>
-                  </div>
-                  <hr>
-            </div>
+        <%for(let i=0; i<=5; i++){%>
+        <div class="self-defense-div">
+            <h3 style="text-align:center;">Memorize the vulnerable places</h3>
+            <img src="https://wl-brightside.cf.tsp.li/resize/728x/jpg/10c/bbc/b376b7593d8b6ea94a2f45eacd.jpg" style="width: 100%; margin-top: 20px; margin-bottom: 20px;">
+            <p style="text-align: center;">It doesn't matter how big or heavy your attacker is because you can beat anyone if you know where the most vulnerable spots are. The main ones are the eyes, nose, throat, chest, knees, and groin.</p>
+        </div>
+        <%}%>
     </div>
 
 </body>

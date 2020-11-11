@@ -2,7 +2,7 @@ body {
   font-size: 16px;
   color: #292b2c;
   font-family: "Oxygen", sans-serif;
-  background: url("http://www.pngmagic.com/product_images/light-yellow-background.jpg");
+  background: url("/images/light-yellow-background.jpg");
   background-size: cover;
 }
 
@@ -14,7 +14,7 @@ body {
   width: 100%;
   z-index: 999;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
-  background-image: url("https://cutewallpaper.org/21/dark-purple-gradient-background/Dark-Purple-Backgrounds-on-WallpaperGetcom.jpg");
+  background-image: url("/images/navbar-footer-bg.jpg");
   background-size: cover;
 }
 .navbar-brand {
@@ -138,8 +138,7 @@ body {
 
 /********* Jumbotron Begins***********/
 .container .jumbotron {
-  background: url("https://table-31.com/wp-content/uploads/2018/07/Criminal-Law0.jpg")
-    no-repeat;
+  background: url("/images/jumbotron.jpg") no-repeat;
 }
 .gradient:after {
   content: "";
@@ -249,7 +248,7 @@ body {
   margin-top: 30px;
   padding-top: 35px;
   padding-bottom: 30px;
-  background: url("https://cutewallpaper.org/21/dark-purple-gradient-background/Dark-Purple-Backgrounds-on-WallpaperGetcom.jpg");
+  background: url("/images/navbar-footer-bg.jpg");
   background-size: cover;
   color: #fff;
   border-top: 0;

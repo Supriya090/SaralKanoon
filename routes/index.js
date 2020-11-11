@@ -44,17 +44,17 @@ router.get('/signup', function(req, res, next){
   res.render('signup',{title:'Sign Up'});
 });
 
-router.get('/safetyTips1',function(req,res,next){
-  res.render('safetyTips1',{title:"Safety Tips"});
+router.get('/safetyTips0',function(req,res,next){
+  res.render('safetyTips0',{title:"Safety Tips"});
 })
 
 
-router.get('/safetyTips2',function(req,res,next){
-  request("https://supriya090.github.io/SafetyEquipAPI/safety-equip.json", function (error, response, body) {
+router.get('/safetyTips1',function(req,res,next){
+  request("https://supriya090.github.io/SaralKanoonAPIs/safety-equip.json", function (error, response, body) {
   if (!error && response.statusCode == 200) {
      var safetyEquipment = JSON.parse(body);
     //  console.log(safetyEquipment);
-     res.render('safetyTips2',{title:"Saral Kanoon - Safety Equipments", safetyEquipmentList: safetyEquipment});
+     res.render('safetyTips1',{title:"Saral Kanoon - Safety Equipments", safetyEquipmentList: safetyEquipment});
     }
   })
 })

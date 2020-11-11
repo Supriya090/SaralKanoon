@@ -9,6 +9,17 @@
   top: 0;
 }
 
+.self-defense-div {
+  margin-bottom: 20px;
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
+@media (max-width: 991px) {
+  .self-defense-div {
+    padding: 0;
+  }
+}
 .Left {
   left: 0;
 }
