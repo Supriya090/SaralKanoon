@@ -48,6 +48,16 @@ router.get('/safetyTips0',function(req,res,next){
   res.render('safetyTips0',{title:"Safety Tips"});
 })
 
+router.get('/experiences', function(req, res, next){
+  res.render('experiences',{title:'Experiences'});
+});
+
+
+router.get('/addExperience', function(req, res, next){
+  res.render('addExperience',{title:'Add Experiences'});
+});
+
+
 
 router.get('/safetyTips1',function(req,res,next){
   request("https://supriya090.github.io/SaralKanoonAPIs/safety-equip.json", function (error, response, body) {
