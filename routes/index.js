@@ -31,5 +31,11 @@ router.get('/addExperience', function(req, res, next){
 
 
 
+router.get('/aboutUS', function(req, res, next){
+  res.render('aboutUS',{title:'About US'});
+});
+
+
+
 
 module.exports = router;
