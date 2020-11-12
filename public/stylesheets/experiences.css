@@ -1,20 +1,17 @@
-h3 {
+.expDiv {
+  margin-top: 130px;
+}
+
+.expSharing {
+  margin-bottom: 5%;
   margin-left: 70%;
 }
 
-div {
+.tags {
   height: 300px;
   border: 1px solid black;
-  margin-left: 20%;
-  margin-right: 20%;
   margin-bottom: 5%;
 }
-p {
+.indvTags {
   margin-left: 80%;
-}
-
-body {
-  background: url("https://images.unsplash.com/photo-1535955565956-4a631184a821?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80")
-    no-repeat fixed;
-  background-size: cover;
 }

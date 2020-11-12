@@ -1,3 +1,7 @@
+.indv-main-div {
+  margin-top: 140px;
+}
+
 .mainLawList {
   margin-bottom: 20px;
 }
@@ -16,7 +20,7 @@
   color: purple;
 }
 
-.collapsible {
+.collapsibles {
   background-color: rgb(127, 77, 129);
   color: white;
   cursor: pointer;
@@ -29,12 +33,12 @@
   border-bottom: #f1f1f1;
 }
 
-.active,
-.collapsible:hover {
+.activeNow,
+.collapsibles:hover {
   background-color: rgb(90, 48, 92);
 }
 
-.collapsible:after {
+.collapsibles:after {
   content: "\002B";
   color: white;
   font-weight: bold;
@@ -42,7 +46,7 @@
   margin-left: 5px;
 }
 
-.active:after {
+.activeNow:after {
   content: "\2212";
 }
 
@@ -56,4 +60,10 @@
 
 .content p {
   padding-top: 10px;
+}
+
+@media (max-width: 767px) {
+  .indv-main-div {
+    margin-top: 120px;
+  }
 }

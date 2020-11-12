@@ -1,7 +1,6 @@
 body {
   font-size: 16px;
   color: #292b2c;
-  font-family: "Oxygen", sans-serif;
   background: none;
   background-size: cover;
 }
@@ -363,6 +362,9 @@ body {
 }
 
 @media (max-width: 767px) {
+  #navBar {
+    padding-top: 0;
+  }
   .mainContent {
     margin-top: 120px;
   }

@@ -1,0 +1,73 @@
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<link href="https://fonts.googleapis.com/css?family=Sniglet:400,800&display=swap" rel="stylesheet">
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navBar">
+      <div class="container">
+
+        <!-- Logo Section -->
+        <div style="display: flex;">
+            <div class="d-none d-lg-block d-md-block">
+              <a href="#">
+                <img src="/images/logo.png" id="logo-img" alt="logo" loading="lazy" >
+              </a>
+            </div>
+            <div class="navbar-brand" style="padding-top: 20px;">
+              <h1 href="#"><%= title%></h1>
+              <h4 ><%= subTitle%></h4>
+            </div>
+        </div>
+        <!-- Navbar Section -->
+        <div class="block-display">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto" id="nav-list">
+              <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/categories">Law Categories <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/safetyTips1">Safety Tips <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/experiences">Read Experiences<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#">About Us <span class="sr-only">(current)</span></a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Search Button Section -->
+          <div class="mr-auto">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchBar">
+              <button class="btn btn-secondary my-2 my-sm-0" type="submit"  id="searchIcon"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Toggle Button Section -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Login/SignUp Section -->
+        <div class="navbar-brand block-display d-none d-lg-block">
+          <a href="/login"><button type="button" class="btn btn-secondary btn-sm logInButton">Log In</button></a>
+          <a href="/signup"><button type="button" class="btn btn-secondary btn-sm logInButton">Sign Up</button></a>
+        </div>
+
+        <!-- Login Dropdown Section -->
+        <div class="dropdown d-block  d-lg-none">
+          <button onclick="myFunction()" class="dropbtn"><i class="fa fa-caret-down"></i></button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="/login">Log In</a>
+            <a href="/signup">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Dropdown Script -->
+    <script src="/javascripts/index.js"></script>
+  </header>

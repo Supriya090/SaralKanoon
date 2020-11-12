@@ -5,21 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/singleCategory.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
-    <header>
-        <nav class="navbar" id="navBar"></nav>
-    </header>
-    <div class="container" style="margin-top: 60px;">
-            <body>
-              <%singleCategoryList.forEach(function(singleCategory){ %>
-            <div class="mainLawList">
-              <h2><%=singleCategory.title%> Laws</h2>
-            <button class="collapsible"><%=singleCategory.definition[0].title%></button>
+    <%- include('partials/header') %>
+      <div class="container indv-main-div">
+      <%singleCategoryList.forEach(function(singleCategory){ %>
+        <div class="mainLawList">
+          <h2><%=singleCategory.title%> Laws</h2>
+          <button class="collapsibles"><%=singleCategory.definition[0].title%></button>
             <div class="content">
               <p> According to the <strong><%=singleCategory.actName%></strong>,
                 <ol>
@@ -34,7 +30,7 @@
                 </ol>
                 </p>
             </div>
-            <button class="collapsible"><%=singleCategory.lawText[0]%></button>
+            <button class="collapsibles"><%=singleCategory.lawText[0]%></button>
             <div class="content">
                 <p>
                   <ol>
@@ -45,7 +41,7 @@
                     </ol>
                 </p>
             </div>
-            <button class="collapsible"><%=singleCategory.filingComplaintText[0]%></button>
+            <button class="collapsibles"><%=singleCategory.filingComplaintText[0]%></button>
                 <div class="content">
                   <p>
                     <ol>
@@ -59,7 +55,7 @@
                         <strong><%=singleCategory.filingComplaintText[singleCategory.filingComplaintText.length-1]%></strong>
                       </p>
                     </div>
-                <button class="collapsible"><%=singleCategory.protectionText[0]%></button>
+                <button class="collapsibles"><%=singleCategory.protectionText[0]%></button>
                 <div class="content">
                   <p>
                     <ol>
@@ -79,7 +75,7 @@
                     </ol>
                   </p>
                 </div>
-                <button class="collapsible"><%=singleCategory.cameraText[0]%></button>
+                <button class="collapsibles"><%=singleCategory.cameraText[0]%></button>
                 <div class="content">
                   <p>
                     <ol>
@@ -90,7 +86,7 @@
                     </ol>
                   </p>
             </div>
-            <button class="collapsible"> <%=singleCategory.perpetratorExpensesText[0]%></button>
+            <button class="collapsibles"> <%=singleCategory.perpetratorExpensesText[0]%></button>
                 <div class="content">
                   <p>
                     <ol>
@@ -101,11 +97,11 @@
                     </ol>
                 </p>
             </div>
-            <button class="collapsible"><%=singleCategory.compensationText[0]%></button>
+            <button class="collapsibles"><%=singleCategory.compensationText[0]%></button>
                 <div class="content">
                   <p><%=singleCategory.compensationText[1]%></p>
             </div>
-            <button class="collapsible"><%=singleCategory.serviceCentreText[0]%></button>
+            <button class="collapsibles"><%=singleCategory.serviceCentreText[0]%></button>
                 <div class="content">
                   <p>
                     <ol>
@@ -116,7 +112,7 @@
                     </ol>
                   </p>
             </div>
-            <button class="collapsible"><%=singleCategory.serviceFundText[0]%></button>
+            <button class="collapsibles"><%=singleCategory.serviceFundText[0]%></button>
             <div class="content">
               <p>
                 <ol>
@@ -140,7 +136,7 @@
                 </ol>
               </p>
             </div>
-            <button class="collapsible"><%=singleCategory.penaltyText[0]%></button>
+            <button class="collapsibles"><%=singleCategory.penaltyText[0]%></button>
             <div class="content">
               <p>
                 <ol>
@@ -151,11 +147,11 @@
                 </ol>
               </p>
             </div>
-            <button class="collapsible"><%=singleCategory.limitation[0]%></button>
+            <button class="collapsibles"><%=singleCategory.limitation[0]%></button>
             <div class="content">
               <p><%=singleCategory.limitation[1]%></p>
             </div>
-            <button class="collapsible"><%=singleCategory.organization[0].title%></button>
+            <button class="collapsibles"><%=singleCategory.organization[0].title%></button>
             <div class="content">
               <p>
                 <ol style="list-style-type: none;">
@@ -170,10 +166,10 @@
             </div>
         </div>
           <script>
-            var coll = document.getElementsByClassName("collapsible");
+            var coll = document.getElementsByClassName("collapsibles");
             for (let i = 0; i < coll.length; i++) {
               coll[i].addEventListener("click", function() {
-                this.classList.toggle("active");
+                this.classList.toggle("activeNow");
                 var content = this.nextElementSibling;
                 if (content.style.maxHeight){
                   content.style.maxHeight = null;
@@ -185,5 +181,6 @@
           </script>            
     </div>
     <%})%> 
+    <%- include('partials/footer') %>
   </body>
 </html>

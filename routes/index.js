@@ -62,36 +62,36 @@ router.get('/', async function(req, res, next) {
 
 // Get to Category Page
 router.get('/categories', function(req, res, next){
-  res.render('categories',{title:'Category'});
+  res.render('categories',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
 });
 
 router.get('/single-category', async function(req, res, next){
   let singleCategory = await SingleCategory.find()
-  res.render('singleCategory',{title:'Saral Kanoon - Single Category', singleCategoryList: singleCategory});
+  res.render('singleCategory',{title: 'Saral Kanoon', subTitle:'Law Made Easy', singleCategoryList: singleCategory});
 });
 
 router.get('/login', function(req, res, next){
-  res.render('login',{title:'Login'});
+  res.render('login',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
 });
 
 router.get('/signup', function(req, res, next){
-  res.render('signup',{title:'Sign Up'});
+  res.render('signup',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
 });
 
 router.get('/experiences', function(req, res, next){
-  res.render('experiences',{title:'Experiences'});
+  res.render('experiences',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
 });
 
 
 router.get('/addExperience', function(req, res, next){
-  res.render('addExperience',{title:'Add Experiences'});
+  res.render('addExperience',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
 });
 
 router.get('/safetyTips0',function(req,res,next){
   request("https://supriya090.github.io/SaralKanoonAPIs/self-defense.json", function (error, response, body) {
   if (!error && response.statusCode == 200) {
      var selfDefenseTechniques = JSON.parse(body);
-    res.render('safetyTips0',{title:"Saral Kanoon- Self Defense Techniques", selfDefenseTechniqueList: selfDefenseTechniques});
+    res.render('safetyTips0',{title: 'Saral Kanoon', subTitle:'Law Made Easy', selfDefenseTechniqueList: selfDefenseTechniques});
     }
   })
 })
@@ -100,7 +100,7 @@ router.get('/safetyTips1',function(req,res,next){
   request("https://supriya090.github.io/SaralKanoonAPIs/safety-equip.json", function (error, response, body) {
   if (!error && response.statusCode == 200) {
      var safetyEquipment = JSON.parse(body);
-     res.render('safetyTips1',{title:"Saral Kanoon - Safety Equipments", safetyEquipmentList: safetyEquipment});
+     res.render('safetyTips1',{title: 'Saral Kanoon', subTitle:'Law Made Easy', safetyEquipmentList: safetyEquipment});
     }
   })
 })

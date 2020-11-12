@@ -1,12 +1,12 @@
-#title{
-    background-color: paleturquoise;
+#title {
+  background-color: paleturquoise;
+}
+#Submitbutton {
+  background-color: #5cb85c;
+
+  width: 150px;
 }
 
-.container{
-    padding-top:20px ;
-}
-#Submitbutton{
-    background-color:#5cb85c;
-
-    width: 150px;
+.signup-div {
+  padding-top: 30px;
 }

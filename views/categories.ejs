@@ -9,6 +9,7 @@
     <title><%= title %></title>
 </head>
 <body> 
+  <%- include('partials/header') %>
   <div class="container">
     <!-- Sexual Offence -->
     <div id="SexualOffence">
@@ -45,11 +46,11 @@
       </div>
       <hr>
     <div id="DomesticViolence">
-        <h2 id="1C">Domestic Violence Laws</h2> <br>
+        <h2 id="1C">Domestic Violence Law</h2> <br>
             <div class="row">
-                <%for(let i =0; i <=2; i++){%>
+                <%for(let i =0; i <=0; i++){%>
                     <div class="col-md-4 col-sm-6 col-xs-12">
-                        <a href="#" onclick="">
+                        <a href="/single-category" onclick="">
                         <div class="category-tile">
                             <img src="/images/rape.jpg" class="rounded float-left images" alt="rape"  >
                             <span>Sexual Assault Laws</span>
@@ -58,16 +59,8 @@
                       </div>
                     <%}%>
                 </div>
-      </div>
-      </div>  
-
-            <!-- <a href="./rape">
-                <div class="card col-md-4 col-sm-6 col-xs-12">
-                    <img src="/images/rape.jpg" class="rounded float-left" alt="rape" height="300px" width="300px"  >
-                    <div class="card-img-overlay">
-                        <h6 class="card-text">Rape</h6>
-                    </div>  
-                </div>  
-            </a>
-
-       
+              </div>
+          </div>
+          <%- include('partials/footer') %>
+  </body>
+</html>  
