@@ -2,7 +2,7 @@ body {
   font-size: 16px;
   color: #292b2c;
   font-family: "Oxygen", sans-serif;
-  background: url("/images/light-yellow-background.jpg");
+  background: none;
   background-size: cover;
 }
 
@@ -16,9 +16,6 @@ body {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
   background-image: url("/images/navbar-footer-bg.jpg");
   background-size: cover;
-}
-.navbar-brand {
-  padding-top: 25px;
 }
 
 .navbar-brand h1 {

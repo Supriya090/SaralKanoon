@@ -17,18 +17,17 @@
         <div class="container">
 
           <!-- Logo Section -->
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+          <div style="display: flex;">
               <div class="d-none d-lg-block d-md-block">
-                <img src="/images/logo.png" id="logo-img" alt="logo" loading="lazy" >
+                <a href="#">
+                  <img src="/images/logo.png" id="logo-img" alt="logo" loading="lazy" >
+                </a>
               </div>
-            </a>
-            <div class="navbar-brand">
-              <h1 href="#"><%= title%></h1>
-              <h4 ><%= subTitle%></h4>
-            </div>
+              <div class="navbar-brand" style="padding-top: 20px;">
+                <h1 href="#"><%= title%></h1>
+                <h4 ><%= subTitle%></h4>
+              </div>
           </div>
-
           <!-- Navbar Section -->
           <div class="block-display">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -37,16 +36,16 @@
                   <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="/categories">Categories <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="/categories">Law Categories <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
                   <a class="nav-link" href="/safetyTips1">Safety Tips <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">About Us <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="/experiences">Read Experiences<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Experiences<span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="#">About Us <span class="sr-only">(current)</span></a>
                 </li>
               </ul>
             </div>
@@ -55,15 +54,12 @@
             <div class="mr-auto">
               <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchBar">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit"  id="searchIcon"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
-                  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-                </svg></button>
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit"  id="searchIcon"><i class="fa fa-search"></i></button>
               </form>
             </div>
           </div>
 
-          <!-- Toggle Buttom Section -->
+          <!-- Toggle Button Section -->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -74,11 +70,6 @@
             <a href="/signup"><button type="button" class="btn btn-secondary btn-sm logInButton">Sign Up</button></a>
           </div>
 
-          <style>
-            .show{
-              display: block;
-            }
-          </style>
           <!-- Login Dropdown Section -->
           <div class="dropdown d-block  d-lg-none">
             <button onclick="myFunction()" class="dropbtn"><i class="fa fa-caret-down"></i></button>
@@ -92,27 +83,7 @@
     </header>
 
     <!-- Dropdown Script -->
-    <script>
-      /* When the user clicks on the button, 
-      toggle between hiding and showing the dropdown content */
-      function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-      }
-      
-      // Close the dropdown if the user clicks outside of it
-      window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-          var dropdowns = document.getElementsByClassName("dropdown-content");
-          var i;
-          for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-              openDropdown.classList.remove('show');
-            }
-          }
-        }
-      }
-    </script>
+    <script src="/javascripts/index.js"></script>
       
     <!-- Main Content Begins -->
     <div class="container mainContent">
@@ -127,7 +98,7 @@
 
       <!-- Categories Section -->
       <hr>
-      <h3>Categories</h3>
+      <h3>Law Categories</h3>
       <div class="row">
         <% categoryList.forEach(function(category, i){ %>
           <div class="col-md-4 col-sm-6 col-xs-12">
