@@ -2,9 +2,10 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 // var safetyEquipment = require('../resources/safetyEquip')
+// var selfDefenseTechniques = require('../resources/selfDefense');
 let Categories = require("../models/categories");
 let SafetyTips = require("../models/safety")
-let DomesticViolence = require("../models/DomesticViolence")
+let SingleCategory = require("../models/singleCategory")
 
 router.get('/add', function(req, res, next){
   res.render('test', {
@@ -14,7 +15,7 @@ router.get('/add', function(req, res, next){
 
 router.post('/save', function(req, res){
   // books.push({...req.body, _id: `00${books.length + 1}`});
-  const category = new DomesticViolence;
+  const category = new SingleCategory;
   category.title = "Domestic Violence";
   category.actName = "Domestic Violence Act, 2066";
 
@@ -42,6 +43,7 @@ router.post('/save', function(req, res){
 
   category.organization.push({title:"Organizations Working for this Purpose"},{title:"National Women Commission",link:"https://www.nwc.gov.np/"},{title:"Saathi Women Shelter",link:"https://saathi.org.np/women-shelter/"},{title:"Burns Violence Survivors",link:"https://www.bvsnepal.org.np/about/"});
 
+  category.tags.push("domestic","violence","women","physical","mental","harm","perpetrator","penalty");
   console.log(category.definition[0]);
   let promise = category.save();
   promise.then(()=>{
@@ -64,7 +66,7 @@ router.get('/categories', function(req, res, next){
 });
 
 router.get('/single-category', async function(req, res, next){
-  let singleCategory = await DomesticViolence.find()
+  let singleCategory = await SingleCategory.find()
   res.render('singleCategory',{title:'Saral Kanoon - Single Category', singleCategoryList: singleCategory});
 });
 
@@ -76,10 +78,6 @@ router.get('/signup', function(req, res, next){
   res.render('signup',{title:'Sign Up'});
 });
 
-router.get('/safetyTips0',function(req,res,next){
-  res.render('safetyTips0',{title:"Safety Tips"});
-})
-
 router.get('/experiences', function(req, res, next){
   res.render('experiences',{title:'Experiences'});
 });
@@ -89,13 +87,19 @@ router.get('/addExperience', function(req, res, next){
   res.render('addExperience',{title:'Add Experiences'});
 });
 
-
+router.get('/safetyTips0',function(req,res,next){
+  request("https://supriya090.github.io/SaralKanoonAPIs/self-defense.json", function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+     var selfDefenseTechniques = JSON.parse(body);
+    res.render('safetyTips0',{title:"Saral Kanoon- Self Defense Techniques", selfDefenseTechniqueList: selfDefenseTechniques});
+    }
+  })
+})
 
 router.get('/safetyTips1',function(req,res,next){
   request("https://supriya090.github.io/SaralKanoonAPIs/safety-equip.json", function (error, response, body) {
   if (!error && response.statusCode == 200) {
      var safetyEquipment = JSON.parse(body);
-     console.log(safetyEquipment);
      res.render('safetyTips1',{title:"Saral Kanoon - Safety Equipments", safetyEquipmentList: safetyEquipment});
     }
   })

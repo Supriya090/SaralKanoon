@@ -14,7 +14,8 @@ const DomesticViolenceSchema = mongoose.Schema({
     serviceFundText: [String],
     penaltyText: [String],
     limitation: [String],
-    organization: [Object]
+    organization: [Object],
+    tags:[String]
 })
 
-module.exports = mongoose.model('DomesticViolence', DomesticViolenceSchema);
+module.exports = mongoose.model('SingleCategory', DomesticViolenceSchema);

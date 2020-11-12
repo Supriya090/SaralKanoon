@@ -22,13 +22,16 @@
           </nav>
     </header>
     <div class="container" style="margin-top: 60px;">
-        <%for(let i=0; i<=5; i++){%>
+      <%selfDefenseTechniqueList.forEach(function(technique){ %>
         <div class="self-defense-div">
-            <h3 style="text-align:center;">Memorize the vulnerable places</h3>
-            <img src="https://wl-brightside.cf.tsp.li/resize/728x/jpg/10c/bbc/b376b7593d8b6ea94a2f45eacd.jpg" style="width: 100%; margin-top: 20px; margin-bottom: 20px;">
-            <p style="text-align: center;">It doesn't matter how big or heavy your attacker is because you can beat anyone if you know where the most vulnerable spots are. The main ones are the eyes, nose, throat, chest, knees, and groin.</p>
+            <h3 style="text-align:center;"><%= technique.title%></h3>
+            <img src="<%= technique.image%>" style="width: 100%; margin-top: 20px; margin-bottom: 20px;">
+            <%for(let i =0; i<(technique.description.length); i++){%>
+            <p style="text-align: center;"><%=technique.description[i]%></p>
+            <%}%>
         </div>
-        <%}%>
+        <hr>
+        <%})%>
     </div>
 
 </body>

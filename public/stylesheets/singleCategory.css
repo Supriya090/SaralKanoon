@@ -1,5 +1,19 @@
 .mainLawList {
-  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.mainLawList h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#orgLinks {
+  text-decoration: none;
+}
+
+#orgLinks :hover {
+  text-decoration: none;
+  color: purple;
 }
 
 .collapsible {

@@ -17,8 +17,8 @@
     <div class="container" style="margin-top: 60px;">
             <body>
               <%singleCategoryList.forEach(function(singleCategory){ %>
-                <h2><%=singleCategory.title%> Laws</h2>
             <div class="mainLawList">
+              <h2><%=singleCategory.title%> Laws</h2>
             <button class="collapsible"><%=singleCategory.definition[0].title%></button>
             <div class="content">
               <p> According to the <strong><%=singleCategory.actName%></strong>,
@@ -59,7 +59,6 @@
                         <strong><%=singleCategory.filingComplaintText[singleCategory.filingComplaintText.length-1]%></strong>
                       </p>
                     </div>
-                </div>
                 <button class="collapsible"><%=singleCategory.protectionText[0]%></button>
                 <div class="content">
                   <p>
@@ -162,7 +161,7 @@
                 <ol style="list-style-type: none;">
                   <%for(let i =1; i<(singleCategory.organization.length); i++){%>
                     <li>
-                      <a href="<%=singleCategory.organization[i].link%>"> <%=singleCategory.organization[i].title%></a>  
+                      <a href="<%=singleCategory.organization[i].link%>" id="orgLinks"> <%=singleCategory.organization[i].title%></a>  
                     </li>
                     <br>
                   <%}%>
