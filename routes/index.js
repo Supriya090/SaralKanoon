@@ -62,7 +62,9 @@ router.get('/addExperience', function(req, res, next){
 });
 
 router.get('/search', async function(req, res, next){
-  let searchCards = await SearchCard.find();
+  var regex = new RegExp(req.query.value,"i");
+  console.log(regex);
+  let searchCards = await SearchCard.find({tags: regex});
   res.render('searchCards',{title: 'Saral Kanoon', subTitle:'Law Made Easy', searchCardList: searchCards});
 });
 
