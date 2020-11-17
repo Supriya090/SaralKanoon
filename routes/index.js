@@ -6,12 +6,27 @@ var request = require('request');
 let Categories = require("../models/categories");
 let SafetyTips = require("../models/safety")
 let SingleCategory = require("../models/singleCategory")
+let Experience = require("../models/experiences")
+
+
+router.post('/postExperience', function(req, res){
+ 
+  const experience = new Experience(req.body);
+  console.log(experience);
+  let promise = experience.save();
+  promise.then(() => {
+      console.log('experience posted');
+      res.redirect('/experiences');
+  })
+ 
+});
 
 router.get('/add', function(req, res, next){
   res.render('test', {
       title: 'Add book',
   });
 })
+
 
 router.post('/save', function(req, res){
   // books.push({...req.body, _id: `00${books.length + 1}`});
@@ -52,13 +67,15 @@ router.post('/save', function(req, res){
   })
 })
 
+
+
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  let categories = await Categories.find()
-  let safetyTips = await SafetyTips.find()
-  console.log(categories[0]._id);
-  res.render('index', { title: 'Saral Kanoon', subTitle:'Law Made Easy', categoryList: categories, safetyTipList: safetyTips });
+  let categories = await Categories.find();
+  let safetyTips = await SafetyTips.find();
+    res.render('index', { title: 'Saral Kanoon', subTitle:'Law Made Easy', categoryList: categories, safetyTipList: safetyTips});
 });
+
 
 // Get to Category Page
 router.get('/categories', function(req, res, next){
@@ -66,7 +83,7 @@ router.get('/categories', function(req, res, next){
 });
 
 router.get('/single-category', async function(req, res, next){
-  let singleCategory = await SingleCategory.find()
+  let singleCategory = await SingleCategory.find();
   res.render('singleCategory',{title: 'Saral Kanoon', subTitle:'Law Made Easy', singleCategoryList: singleCategory});
 });
 
@@ -78,8 +95,10 @@ router.get('/signup', function(req, res, next){
   res.render('signup',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
 });
 
-router.get('/experiences', function(req, res, next){
-  res.render('experiences',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
+router.get('/experiences', async function(req, res, next){
+  let experience = await Experience.find();
+
+  res.render('experiences',{title: 'Saral Kanoon', subTitle:'Law Made Easy', experienceList: experience});
 });
 
 
@@ -104,5 +123,8 @@ router.get('/safetyTips1',function(req,res,next){
     }
   })
 })
+
+
+
 
 module.exports = router;
