@@ -48,9 +48,16 @@
         </div>
 
         <!-- Toggle Button Section -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="dropdown d-block d-lg-none menuList">
+          <button onclick="myFunction1()" class="dropbtn" id="menuList"><span class="navbar-toggler-icon" ></span></button>
+          <div id="myDropdown1" class="dropdown-content">
+            <a href="/">Home</a>
+            <a href="/categories">Law Categories</a>
+            <a href="/experiences">Read Experiences</a>
+            <a href="/safetyTips0">Safety Tips</a>
+            <a href="#">About Us</a>
+          </div>
+        </div>
 
         <!-- Login/SignUp Section -->
         <div class="navbar-brand block-display d-none d-lg-block">
@@ -60,8 +67,8 @@
 
         <!-- Login Dropdown Section -->
         <div class="dropdown d-block  d-lg-none">
-          <button onclick="myFunction()" class="dropbtn"><i class="fa fa-caret-down"></i></button>
-          <div id="myDropdown" class="dropdown-content">
+          <button onclick="myFunction2()" class="dropbtn"><i class="fa fa-caret-down"></i></button>
+          <div id="myDropdown2" class="dropdown-content">
             <a href="/login">Log In</a>
             <a href="/signup">Sign Up</a>
           </div>

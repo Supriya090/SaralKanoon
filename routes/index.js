@@ -65,6 +65,9 @@ router.get('/search', async function(req, res, next){
   var regex = new RegExp(req.query.value,"i");
   console.log(regex);
   let searchCards = await SearchCard.find({tags: regex});
+  if (searchCards.length == 0){
+    console.log("Sorry, no result found! Try using another keyword.")
+  }
   res.render('searchCards',{title: 'Saral Kanoon', subTitle:'Law Made Easy', searchCardList: searchCards});
 });
 

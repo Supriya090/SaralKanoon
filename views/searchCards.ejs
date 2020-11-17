@@ -11,6 +11,9 @@
     <%- include('partials/header') %>
     <div class="container">
     <div class="row">
+      <%if(searchCardList.length == 0){%>
+        <div class="errorText">Sorry, no result found! Please try again using a different keyword.</div>
+      <%}else{%> 
       <%searchCardList.forEach(function(searchCard){ %>
           <div class="card" style="width: 80%; margin: 10px auto">
             <div class="card-body">
@@ -26,6 +29,7 @@
             </div>
           </div>
         <%})%>
+        <%}%>
         </div>
     </div>
     <%- include('partials/footer') %>
