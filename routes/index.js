@@ -6,7 +6,6 @@ var request = require('request');
 let Categories = require("../models/categories");
 let SafetyTips = require("../models/safety")
 let SingleCategory = require("../models/singleCategory")
-<<<<<<< HEAD
 let Experience = require("../models/experiences")
 
 
@@ -21,9 +20,7 @@ router.post('/postExperience', function(req, res){
   })
  
 });
-=======
 let SearchCard = require("../models/searchCards");
->>>>>>> c4df0341244c96cee80c5aee763c0b42e8498860
 
 router.get('/add', function(req, res, next){
   res.render('test', {
