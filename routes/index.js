@@ -71,7 +71,6 @@ router.get('/signup', function(req, res, next){
 
 router.get('/experiences', async function(req, res, next){
   let experience = await Experience.find();
-
   res.render('experiences',{title: 'Saral Kanoon', subTitle:'Law Made Easy', experienceList: experience});
 });
 
