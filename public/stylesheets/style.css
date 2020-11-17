@@ -87,8 +87,7 @@ body {
 
 .dropbtn:hover,
 .dropbtn:focus {
-  color: #292b2c;
-  background-color: #ddd;
+  background-color: #6c757d;
 }
 
 .dropdown {
