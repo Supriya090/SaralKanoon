@@ -7,7 +7,7 @@ let Categories = require("../models/categories");
 let SafetyTips = require("../models/safety")
 let SingleCategory = require("../models/singleCategory")
 let Experience = require("../models/experiences")
-
+let SearchCard = require("../models/searchCards");
 
 router.post('/postExperience', function(req, res){
  
@@ -20,7 +20,7 @@ router.post('/postExperience', function(req, res){
   })
  
 });
-let SearchCard = require("../models/searchCards");
+
 
 router.get('/add', function(req, res, next){
   res.render('test', {
@@ -87,6 +87,16 @@ router.get('/search', async function(req, res, next){
     console.log("Sorry, no result found! Try using another keyword.")
   }
   res.render('searchCards',{title: 'Saral Kanoon', subTitle:'Law Made Easy', searchCardList: searchCards});
+});
+
+router.get('/searchExp', async function(req, res, next){
+  var regex = new RegExp(req.query.value,"i");
+  console.log(regex);
+  let searchExperience = await Experience.find({tag: regex});
+  if (searchExperience.length == 0){
+    console.log("Sorry, no result found! Try using another keyword.")
+  }
+  res.render('experiences',{title: 'Saral Kanoon', subTitle:'Law Made Easy', experienceList: searchExperience});
 });
 
 router.get('/safetyTips0',function(req,res,next){

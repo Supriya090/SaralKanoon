@@ -11,6 +11,15 @@
 <body>
     <%- include('partials/header') %>
     <div class="container expDiv"> 
+        
+        <!-- Search Button Section -->
+        <div>
+            <form class="form-inline my-2 my-lg-0 pull-right" method="GET" action="/searchExp">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="value" id="expSearchBar">
+              <button class="btn btn-secondary my-2 my-sm-0" type="submit"  id="searchIcon"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+        </div>
     <a href="/addExperience" >
         <h3 class="expSharing" >Want to share your Story?</h3>
     </a>
