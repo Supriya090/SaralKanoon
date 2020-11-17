@@ -16,7 +16,10 @@
     </a>
     <% experienceList.forEach(function(experience, i) { %>
         <div class="tags">
-            <p class="indvTags"><%= experience.content %></p>
+            <p class="contents" style= "word-break: break-all;">
+                <%= experience.content %>
+            </p>
+            <p style="margin-left: 80%;"">tags: <%= experience.tag %></p>
         </div>
     <% }) %>
     </div>

@@ -8,8 +8,12 @@
 }
 
 .tags {
-  height: 300px;
+  max-height: max-content;
+  min-width: min-content;
   border: 1px solid black;
   margin-bottom: 5%;
 }
+/* .contents{
+  width:300px;
+} */
 
