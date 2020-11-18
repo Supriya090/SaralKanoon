@@ -14,22 +14,31 @@
         
         <!-- Search Button Section -->
         <div>
-            <form class="form-inline my-2 my-lg-0 pull-right" method="GET" action="/searchExp">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="value" id="expSearchBar">
+            <form class="form-inline my-2 my-lg-0 pull-right" method="GET" action="/searchExp" id="expForm">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search Tags" aria-label="Search" name="value" id="expSearchBar">
               <button class="btn btn-secondary my-2 my-sm-0" type="submit"  id="searchIcon"><i class="fa fa-search"></i></button>
             </form>
           </div>
         </div>
-    <a href="/addExperience" >
-        <h3 class="expSharing" >Want to share your Story?</h3>
+        <div class="container">
+    <a href="/addExperience" class="shareLink" style="text-decoration: none;">
+        <h5 class="expSharing" >Want to share your Story?</h5>
     </a>
+</div>
+        
+
     <% experienceList.forEach(function(experience, i) { %>
-        <div class="tags">
-            <p class="contents" style= "word-break: break-all;">
-                <%= experience.content %>
-            </p>
-            <p style="margin-left: 80%;"">tags: <%= experience.tag %></p>
-        </div>
+        <div class="card" style="width: 80%; margin: 10px auto; border-color: gray;">
+            <div class="card-body">
+              <h5 class="card-title">Experience #<%=i+1%></h5>
+              <p class="card-text"><%=experience.content%></p>
+              <h6 class="card-subtitle mb-2 text-muted">Tags:
+                <%for(let i =0; i<(experience.tag.length); i++){%>
+                  <span class="badge badge-secondary"><%=experience.tag[i]%></span>
+                <%}%>
+              </h6>
+            </div>
+          </div>
     <% }) %>
     </div>
     <%- include('partials/footer') %>

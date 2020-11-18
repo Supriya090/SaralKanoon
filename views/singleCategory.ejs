@@ -12,7 +12,6 @@
   <body>
     <%- include('partials/header') %>
       <div class="container indv-main-div">
-      <%singleCategoryList.forEach(function(singleCategory){ %>
         <div class="mainLawList">
           <h2><%=singleCategory.title%> Laws</h2>
           <button class="collapsibles"><%=singleCategory.definition[0].title%></button>
@@ -180,7 +179,6 @@
             }
           </script>            
     </div>
-    <%})%> 
     <%- include('partials/footer') %>
   </body>
 </html>

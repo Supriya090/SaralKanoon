@@ -1,16 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-// var safetyEquipment = require('../resources/safetyEquip')
-// var selfDefenseTechniques = require('../resources/selfDefense');
 let Categories = require("../models/categories");
 let SafetyTips = require("../models/safety")
 let SingleCategory = require("../models/singleCategory")
 let Experience = require("../models/experiences")
-let SearchCard = require("../models/searchCards");
+let SearchCard = require("../models/searchCards")
+let SexualAssault = require('../models/sexualAssault');
 
+//Posts User Experiences
 router.post('/postExperience', function(req, res){
- 
   const experience = new Experience(req.body);
   console.log(experience);
   let promise = experience.save();
@@ -29,19 +28,44 @@ router.get('/add', function(req, res, next){
 })
 
 
+// router.post('/save', function(req, res){
+//   // books.push({...req.body, _id: `00${books.length + 1}`});
+//   const category = new SearchCard(req.body);
+//   category.tags.push("domestic","violence","women","physical","mental","harm","perpetrator","penalty");
+//   console.log(category.description);
+//   let promise = category.save();
+//   promise.then(()=>{
+//       console.log("Card added");
+//       res.redirect('/search');
+//   })
+// })
+
 router.post('/save', function(req, res){
   // books.push({...req.body, _id: `00${books.length + 1}`});
-  const category = new SearchCard(req.body);
-  category.tags.push("domestic","violence","women","physical","mental","harm","perpetrator","penalty");
-  console.log(category.description);
+  const category = new SexualAssault;
+  category.title = "Bestiality";
+  category.actName = "National Penal(Code) 2074, Act number 36, Part 1, Chapter 18";
+  category.image = "/images/bestiality.jpg";
+  category.definition.push({title:"What is Bestiality?"},{title:"Bestiality", text:"refers to the sexual intercourse with the animals."})
+  category.lawText.push("What does the Law say?","No person shall have, or cause to be had, sexual intercourse with an animal.");
+
+  category.filingComplaintText.push("Filing of Complaint");
+
+  category.punishmentText.push("Penalty for Bestiality","A person who commits bestiality shall be liable to the following sentence:","A sentence of imprisonment for a term not exceeding two years and a fine not exceeding twenty thousand rupees, if the person has committed, or caused to be committed, sexual intercourse with a cow. ","A sentence of imprisonment for a term not exceeding one year and a fine not exceeding ten thousand rupees, in the case of sexual intercourse with any other animal.");
+
+  category.compensationText.push("Compensation to be Provided","No compensation shall be provided for this offence.");
+
+  category.limitation.push("Limitation to File a Report","The complaint against the perpetrator should be filed within three months from the date of commission of the offence.");
+
+  // category.organization.push({title:"Organizations Working for this Purpose"},{title:"Rakshya Nepal",link:"https://www.sathsath.org/about/"},{title:"Saath Saath",link:"https://www.sathsath.org/about/"},{title:"Women Nepal Organization",link:"https://www.womenepal.org/womens-and-childrens-issues/sexual-abuse/"},{title:"Better Care Network",link:"https://bettercarenetwork.org/bcn-in-action/organizations-working-on-childrens-care/asha-nepal"});
+
+  console.log(category.definition[0]);
   let promise = category.save();
   promise.then(()=>{
-      console.log("Card added");
-      res.redirect('/search');
+      console.log("Category added");
+      res.redirect('/sexual-assault');
   })
 })
-
-
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
@@ -58,7 +82,12 @@ router.get('/categories', function(req, res, next){
 
 router.get('/single-category', async function(req, res, next){
   let singleCategory = await SingleCategory.find();
-  res.render('singleCategory',{title: 'Saral Kanoon', subTitle:'Law Made Easy', singleCategoryList: singleCategory});
+  res.render('singleCategory',{title: 'Saral Kanoon', subTitle:'Law Made Easy', singleCategory: singleCategory[0]});
+});
+
+router.get('/sexual-assault', async function(req, res, next){
+  let sexualAssault = await SexualAssault.find();
+  res.render('sexualAssault',{title: 'Saral Kanoon', subTitle:'Law Made Easy', sexualAssault: sexualAssault[8]});
 });
 
 router.get('/login', function(req, res, next){

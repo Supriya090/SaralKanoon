@@ -9,22 +9,9 @@ var usersRouter = require('./routes/users');
 var mongoose = require('mongoose');
 var app = express();
 
-// var globalConnectionStack = [];
 
-// var dbs = {
-//   'localhost:3000':{
-//     uri: 'mongodb://localhost/categoriesDB'
-//   },
-//   '127.0.0.1:3000':{
-//     uri:'mongodb://localhost/experiencesDB'
-//   }
-// }
+mongoose.connect('mongodb://localhost/categoriesDB', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false}, () => { console.log('connected to CategoriesDB')});
 
-// 
-mongoose.connect('mongodb://localhost/categoriesDB', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false}, () => { console.log('connected to Categories db')});
-// mongoose.createConnection('mongodb://localhost/experiencesDB', { useNewUrlParser: true,  useUnifiedTopology: true, useFindAndModify: false}, () => { console.log('connected to Experiences db')});
-
-//
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
