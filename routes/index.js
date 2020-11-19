@@ -7,6 +7,9 @@ let Categories = require("../models/categories");
 let SafetyTips = require("../models/safety")
 let SingleCategory = require("../models/singleCategory")
 let Experience = require("../models/experiences")
+let SignUp = require("../models/signup")
+
+
 
 
 router.post('/postExperience', function(req, res){
@@ -29,17 +32,17 @@ router.get('/add', function(req, res, next){
 })
 
 
-router.post('/save', function(req, res){
-  // books.push({...req.body, _id: `00${books.length + 1}`});
-  const category = new SearchCard(req.body);
-  category.tags.push("domestic","violence","women","physical","mental","harm","perpetrator","penalty");
-  console.log(category.description);
-  let promise = category.save();
-  promise.then(()=>{
-      console.log("Card added");
-      res.redirect('/search');
-  })
-})
+// router.post('/save', function(req, res){
+//   // books.push({...req.body, _id: `00${books.length + 1}`});
+//   const category = new SearchCard(req.body);
+//   category.tags.push("domestic","violence","women","physical","mental","harm","perpetrator","penalty");
+//   console.log(category.description);
+//   let promise = category.save();
+//   promise.then(()=>{
+//       console.log("Card added");
+//       res.redirect('/search');
+//   })
+// })
 
 
 
@@ -65,6 +68,9 @@ router.get('/login', function(req, res, next){
   res.render('login',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
 });
 
+router.get('/aboutus', function(req, res, next){
+  res.render('aboutus',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
+});
 router.get('/signup', function(req, res, next){
   res.render('signup',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
 });

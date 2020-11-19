@@ -15,12 +15,19 @@
         <h3 class="expSharing" >Want to share your Story?</h3>
     </a>
     <% experienceList.forEach(function(experience, i) { %>
-        <div class="tags">
-            <p class="contents" style= "word-break: break-all;">
-                <%= experience.content %>
-            </p>
-            <p style="margin-left: 80%;"">tags: <%= experience.tag %></p>
-        </div>
+        <div class="card" style="width: 80%; margin: 10px auto; border-color: gray; background:url('https://images.unsplash.com/photo-1535955565956-4a631184a821?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80')
+        no-repeat fixed;
+        background-size: cover;">
+            <div class="card-body">
+              <h5 class="card-title">Experience #<%=i+1%></h5>
+              <p class="card-text"><%=experience.content%></p>
+              <h6 class="card-subtitle mb-2 text-muted">Tags:
+                <%for(let i =0; i<(experience.tag.length); i++){%>
+                  <span class="badge badge-secondary"><%=experience.tag[i]%></span>
+                <%}%>
+              </h6>
+            </div>
+          </div>
     <% }) %>
     </div>
     <%- include('partials/footer') %>
