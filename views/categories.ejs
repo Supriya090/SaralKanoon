@@ -15,16 +15,16 @@
     <div id="SexualOffence">
         <h2 id="0C">Sexual Offence Laws</h2> <br>
         <div class="row">
-            <%for(let i =0; i <=2; i++){%>
+            <%sexualAssaultCategoriesList.forEach(function(sexualAssaultCategory){%>
               <div class="col-md-4 col-sm-6 col-xs-12">
-                <a href="#" onclick="">
+                <a href="/sexual-assault/<%=sexualAssaultCategory.title%>" onclick="">
                   <div class="category-tile">
-                    <img src="/images/rape.jpg" class="rounded float-left images" alt="rape"  >
-                    <span>Sexual Assault Laws</span>
+                    <img src="<%=sexualAssaultCategory.image%>" class="rounded float-left images" alt="<%=sexualAssaultCategory.title%> Image"  >
+                    <span><%=sexualAssaultCategory.title%> Laws</span>
                   </div>
                 </a>
               </div>
-            <%}%>
+            <%})%>
           </div>
           <hr>
     <!-- CyberCrimes -->
@@ -33,7 +33,7 @@
         <div class="row">
             <%for(let i =0; i <=2; i++){%>
               <div class="col-md-4 col-sm-6 col-xs-12">
-                <a href="#" onclick="">     
+                <a href="/" onclick="">     
                   <div class="category-tile">
                         <img src="/images/rape.jpg" class="rounded float-left images" alt="rape"  >
                         <span>Sexual Assault Laws</span>
@@ -52,7 +52,7 @@
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <a href="/single-category" onclick="">
                         <div class="category-tile">
-                            <img src="/images/rape.jpg" class="rounded float-left images" alt="rape"  >
+                            <img src="/images/domesticViolence.jpg" class="rounded float-left images" alt="rape"  >
                             <span>Domestic Violence Law</span>
                           </div>
                         </a>

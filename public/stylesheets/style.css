@@ -183,7 +183,7 @@ body {
   background: url("https://inspiringtips.com/wp-content/uploads/2017/04/Make-someone-sad-happy.jpg")
     no-repeat;
   background-position: center;
-  height: 250px;
+  height: 200px;
   width: 100%;
   margin-top: 10px;
   margin-bottom: 15px;
@@ -194,7 +194,7 @@ body {
 }
 
 .categoryImage {
-  height: 250px;
+  height: 200px;
   width: 100%;
 }
 .category-tile span {
@@ -204,7 +204,7 @@ body {
   right: 0;
   width: 100%;
   text-align: center;
-  font-size: 1.4em;
+  font-size: 1.1em;
   text-transform: uppercase;
   background: rgb(142, 36, 170);
   background: radial-gradient(
