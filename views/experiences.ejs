@@ -11,9 +11,22 @@
 <body>
     <%- include('partials/header') %>
     <div class="container expDiv"> 
-    <a href="/addExperience" >
-        <h3 class="expSharing" >Want to share your Story?</h3>
+        
+        <!-- Search Button Section -->
+        <div>
+            <form class="form-inline my-2 my-lg-0 pull-right" method="GET" action="/searchExp" id="expForm">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search Tags" aria-label="Search" name="value" id="expSearchBar">
+              <button class="btn btn-secondary my-2 my-sm-0" type="submit"  id="searchIcon"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+        </div>
+        <div class="container">
+    <a href="/addExperience" class="shareLink" style="text-decoration: none;">
+        <h5 class="expSharing" >Want to share your Story?</h5>
     </a>
+</div>
+        
+
     <% experienceList.forEach(function(experience, i) { %>
         <div class="card" style="width: 80%; margin: 10px auto; border-color: gray; background:url('https://images.unsplash.com/photo-1535955565956-4a631184a821?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80')
         no-repeat fixed;
