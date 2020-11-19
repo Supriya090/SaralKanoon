@@ -14,21 +14,18 @@
       <%if(searchCardList.length == 0){%>
         <div class="errorText">Sorry, no result found! Please try again using a different keyword.</div>
       <%}else{%> 
-      <%searchCardList.forEach(function(searchCard){ %>
-          <div class="card" style="width: 80%; margin: 10px auto">
-            <div class="card-body">
-              <h5 class="card-title"><%=searchCard.title%></h5>
-              <h6 class="card-subtitle mb-2 text-muted"><%=searchCard.actName%></h6>
-              <p class="card-text"><%=searchCard.description%></p>
-              <h6 class="card-subtitle mb-2 text-muted">Tags:
-                <%for(let i =0; i<(searchCard.tags.length); i++){%>
-                  <span class="badge badge-secondary"><%=searchCard.tags[i]%></span>
-                <%}%>
-              </h6>
-              <a href="<%=searchCard.link%>" class="card-link">Read More</a>
+        <%searchCardList.forEach(function(searchCard){ %>
+          <%for(let i =0; i<searchCard.length; i++){%>
+            <div class="card" style="width: 80%; margin: 10px auto">
+              <div class="card-body">
+                <h5 class="card-title"><%=searchCard[i].title%></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%=searchCard[i].actName%></h6>
+                <p class="card-text"><%=searchCard[i].description%></p>
+                <a href="<%=searchCard[i].link%>" class="card-link">Read More</a>
+              </div>
             </div>
-          </div>
-        <%})%>
+            <%}%>
+          <%})%>
         <%}%>
         </div>
     </div>

@@ -31,44 +31,48 @@ router.get('/add', function(req, res, next){
 })
 
 
-// router.post('/save', function(req, res){
-//   // books.push({...req.body, _id: `00${books.length + 1}`});
-//   const category = new SearchCard(req.body);
-//   category.tags.push("domestic","violence","women","physical","mental","harm","perpetrator","penalty");
-//   console.log(category.description);
-//   let promise = category.save();
-//   promise.then(()=>{
-//       console.log("Card added");
-//       res.redirect('/search');
-//   })
-// })
+// Search Card add code
 
 router.post('/save', function(req, res){
   // books.push({...req.body, _id: `00${books.length + 1}`});
-  const category = new SexualAssault;
-  category.title = "Bestiality";
-  category.actName = "National Penal(Code) 2074, Act number 36, Part 1, Chapter 18";
-  category.image = "/images/bestiality.jpg";
-  category.definition.push({title:"What is Bestiality?"},{title:"Bestiality", text:"refers to the sexual intercourse with the animals."})
-  category.lawText.push("What does the Law say?","No person shall have, or cause to be had, sexual intercourse with an animal.");
-
-  category.filingComplaintText.push("Filing of Complaint");
-
-  category.punishmentText.push("Penalty for Bestiality","A person who commits bestiality shall be liable to the following sentence:","A sentence of imprisonment for a term not exceeding two years and a fine not exceeding twenty thousand rupees, if the person has committed, or caused to be committed, sexual intercourse with a cow. ","A sentence of imprisonment for a term not exceeding one year and a fine not exceeding ten thousand rupees, in the case of sexual intercourse with any other animal.");
-
-  category.compensationText.push("Compensation to be Provided","No compensation shall be provided for this offence.");
-
-  category.limitation.push("Limitation to File a Report","The complaint against the perpetrator should be filed within three months from the date of commission of the offence.");
-
-  // category.organization.push({title:"Organizations Working for this Purpose"},{title:"Rakshya Nepal",link:"https://www.sathsath.org/about/"},{title:"Saath Saath",link:"https://www.sathsath.org/about/"},{title:"Women Nepal Organization",link:"https://www.womenepal.org/womens-and-childrens-issues/sexual-abuse/"},{title:"Better Care Network",link:"https://bettercarenetwork.org/bcn-in-action/organizations-working-on-childrens-care/asha-nepal"});
-
-  console.log(category.definition[0]);
+  const category = new SearchCard(req.body);
+  category.tags.push("bestiality",
+  "animal sex",
+  "cow dog ","cat ox goat",
+  "penalty for bestiality","laws"
+  );
+  console.log(category.description);
   let promise = category.save();
   promise.then(()=>{
-      console.log("Category added");
-      res.redirect('/sexual-assault');
+      console.log("Card added");
+      res.redirect('/');
   })
 })
+
+//Sub Category Add code
+// router.post('/save', function(req, res){
+//   const category = new SexualAssault;
+//   category.title = "Bestiality";
+//   category.actName = "National Penal(Code) 2074, Act number 36, Part 1, Chapter 18, Section 227";
+//   category.image = "/images/bestiality.jpg";
+//   category.definition.push({title:"What is Bestiality?"},{title:"Bestiality", text:"refers to the sexual intercourse with the animals."})
+//   category.lawText.push("What does the Law say?","No person shall have, or cause to be had, sexual intercourse with an animal.");
+
+//   category.filingComplaintText.push("Filing of Complaint");
+
+//   category.punishmentText.push("Penalty for Bestiality","A person who commits bestiality shall be liable to the following sentence:","A sentence of imprisonment for a term not exceeding two years and a fine not exceeding twenty thousand rupees, if the person has committed, or caused to be committed, sexual intercourse with a cow. ","A sentence of imprisonment for a term not exceeding one year and a fine not exceeding ten thousand rupees, in the case of sexual intercourse with any other animal.");
+
+//   category.compensationText.push("Compensation to be Provided","No compensation shall be provided for this offence.");
+
+//   category.limitation.push("Limitation to File a Report","The complaint against the perpetrator should be filed within three months from the date of commission of the offence.");
+  
+//   let promise = category.save();
+//   promise.then(()=>{
+//       console.log("sub catergories added");
+//       console.log("Category added");
+//       res.redirect('/categories');
+//   })
+// })
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
@@ -79,8 +83,9 @@ router.get('/', async function(req, res, next) {
 
 
 // Get to Category Page
-router.get('/categories', function(req, res, next){
-  res.render('categories',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
+router.get('/categories', async function(req, res, next){
+  let sexualAssaultCategories = await SexualAssault.find();
+  res.render('categories',{title: 'Saral Kanoon', subTitle:'Law Made Easy', sexualAssaultCategoriesList: sexualAssaultCategories});
 });
 
 router.get('/single-category', async function(req, res, next){
@@ -88,9 +93,10 @@ router.get('/single-category', async function(req, res, next){
   res.render('singleCategory',{title: 'Saral Kanoon', subTitle:'Law Made Easy', singleCategory: singleCategory[0]});
 });
 
-router.get('/sexual-assault', async function(req, res, next){
-  let sexualAssault = await SexualAssault.find();
-  res.render('sexualAssault',{title: 'Saral Kanoon', subTitle:'Law Made Easy', sexualAssault: sexualAssault[8]});
+router.get('/sexual-assault/:title', function(req, res, next){
+  SexualAssault.findOne({title: req.params.title}, function(err, sexualAssault){
+    res.render('sexualAssault',{title: 'Saral Kanoon', subTitle:'Law Made Easy', sexualAssault: sexualAssault});
+  });
 });
 
 router.get('/login', function(req, res, next){
@@ -114,14 +120,35 @@ router.get('/addExperience', function(req, res, next){
   res.render('addExperience',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
 });
 
+// router.get('/search', async function(req, res, next){
+//   var regex = new RegExp(req.query.value,"i");
+//   console.log(regex);
+//   let searchCards = await SearchCard.find({tags: regex});
+//   if (searchCards.length == 0){
+//     console.log("Sorry, no result found! Try using another keyword.")
+//   }
+//   res.render('searchCards',{title: 'Saral Kanoon', subTitle:'Law Made Easy', searchCardList: searchCards});
+// });
+
+// final search wala
+
 router.get('/search', async function(req, res, next){
-  var regex = new RegExp(req.query.value,"i");
-  console.log(regex);
-  let searchCards = await SearchCard.find({tags: regex});
-  if (searchCards.length == 0){
+  let searchArray = req.query.value.split(" ");
+  var searchCards = [];
+  console.log(req.query.value.split(" "));
+  for(let i =0; i<searchArray.length; i++){
+  var regex = new RegExp(searchArray[i],"i");
+  searchCards.push(await SearchCard.find({tags: regex}));
+  }
+  console.log(searchCards);
+  let stringSearchCards = searchCards.map(JSON.stringify);
+  let uniqueStringSearchCards = new Set(stringSearchCards);
+  let uniqueSearchCards = Array.from(uniqueStringSearchCards, JSON.parse);
+
+  if (uniqueSearchCards.length == 0){
     console.log("Sorry, no result found! Try using another keyword.")
   }
-  res.render('searchCards',{title: 'Saral Kanoon', subTitle:'Law Made Easy', searchCardList: searchCards});
+  res.render('searchCards',{title: 'Saral Kanoon', subTitle:'Law Made Easy', searchCardList: uniqueSearchCards});
 });
 
 router.get('/searchExp', async function(req, res, next){
