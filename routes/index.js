@@ -36,11 +36,16 @@ router.get('/add', function(req, res, next){
 router.post('/save', function(req, res){
   // books.push({...req.body, _id: `00${books.length + 1}`});
   const category = new SearchCard(req.body);
-  category.tags.push("bestiality",
-  "animal sex",
-  "cow dog ","cat ox goat",
-  "penalty for bestiality","laws"
-  );
+  category.tags.push("child abuse",
+  "sexual assault",
+  "child molestation",
+  "assault",
+  "sexual assault",
+  "penalty for child abuse",
+  "bad touch",
+  "child harassment",
+  "organization for child safety",
+  "safety laws");
   console.log(category.description);
   let promise = category.save();
   promise.then(()=>{
@@ -73,6 +78,7 @@ router.post('/save', function(req, res){
 //       res.redirect('/categories');
 //   })
 // })
+
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
