@@ -5,6 +5,9 @@ let Categories = require("../models/categories");
 let SafetyTips = require("../models/safety")
 let SingleCategory = require("../models/singleCategory")
 let Experience = require("../models/experiences")
+let SignUp = require("../models/signup")
+
+
 let SearchCard = require("../models/searchCards")
 let SexualAssault = require('../models/sexualAssault');
 
@@ -79,6 +82,9 @@ router.get('/login', function(req, res, next){
   res.render('login',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
 });
 
+router.get('/aboutus', function(req, res, next){
+  res.render('aboutus',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
+});
 router.get('/signup', function(req, res, next){
   res.render('signup',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
 });

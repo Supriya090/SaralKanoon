@@ -28,7 +28,9 @@
         
 
     <% experienceList.forEach(function(experience, i) { %>
-        <div class="card" style="width: 80%; margin: 10px auto; border-color: gray;">
+        <div class="card" style="width: 80%; margin: 10px auto; border-color: gray; background:url('https://images.unsplash.com/photo-1535955565956-4a631184a821?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80')
+        no-repeat fixed;
+        background-size: cover;">
             <div class="card-body">
               <h5 class="card-title">Experience #<%=i+1%></h5>
               <p class="card-text"><%=experience.content%></p>
