@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+    var mongoose = require('mongoose');
 
 const SearchCardsSchema = mongoose.Schema({
     title: String,

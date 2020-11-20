@@ -10,8 +10,11 @@
   </head>
 
   <body>
-    <%- include('partials/header') %>
-      
+    <%if(isLoggedIn){%>
+      <%- include('partials/loggedInHeader') %>
+    <%}else{%>  
+      <%- include('partials/header') %>
+    <%}%>  
     <!-- Main Content Begins -->
     <div class="container mainContent">
 
@@ -25,8 +28,8 @@
 
       <!-- Categories Section -->
       <hr>
-      <h3>Law Categories</h3>
-      <div class="row">
+      <h2>Law Categories</h2>
+      <div class="row" style="margin-bottom: 30px;">
         <% categoryList.forEach(function(category, i){ %>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <a href = "http://localhost:3000/categories#<%=i%>C" onclick="">
@@ -38,17 +41,17 @@
           </div>
         <%})%>
       </div>
-      <div class="seeMore"><a href="/categories" class="moreLink">See More</a></div>
+      <div class="seeMore"><a href="/categories" class="moreLink">See More....</a></div>
 
       <!-- Safety Tips Section -->
       <hr>
-      <h3>Safety Tips</h3>
-      <div class="row">
+      <h2>Safety Tips</h2>
+      <div class="row" style="margin-bottom: 40px;">
         <% safetyTipList.forEach(function(tip, i){ %>
           <div class="col-md-6 col-sm-6 col-xs-12">
             <a href="/safetyTips<%=i%>" onclick="">
               <div class="category-tile">
-                <img src="<%= tip.image%>", alt="<%= tip.title%> Image", class="categoryImage">
+                <img src="<%= tip.image%>", alt="<%= tip.title%> Image", class="categoryImage" >
                 <span><%=tip.title%></span>
               </div>
             </a>
@@ -58,8 +61,13 @@
 
       <!-- Experiences Section -->
     <hr>
+<<<<<<< HEAD
       <h3 class="experienceTitle">Experiences</h3>
           <div>
+=======
+      <h2 class="experienceTitle">Experiences</h2>
+          <div class="readExperiences" style="margin-bottom: 50px;">
+>>>>>>> 0662bc75deb381faa9532d827c8bd320538ee2dc
             <a href="/experiences" onclick="">
               <div class="category-tile experienceTile">
                 <span>Read Users' Experiences</span>
