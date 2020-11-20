@@ -10,7 +10,7 @@
 <body style="background:url('https://images.unsplash.com/photo-1535955565956-4a631184a821?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80')
 no-repeat fixed;
 background-size: cover;">
-    <%- include('partials/header') %>
+    <%- include('partials/loggedInHeader') %>
     <div id="formDiv" class="container">
         <form action="/postExperience" method="POST" >
             <div class="row" style="background-color: transparent; height: 60px; padding: 10px;">
@@ -66,18 +66,18 @@ background-size: cover;">
             <div class="row">
                 <h5 style="padding-right: 100px;">Post Anonymously</h5>
                 <label class="form-check form-check-inline col-md-2"">
-                    <input class="form-check-input" type="radio" name="gender" value="male" style="padding-right: 3px;">
+                    <input class="form-check-input" type="radio" name="user" value=" Anonymous" style="padding-right: 3px;">
                     <span class="form-check-label" > Yes </span>
                 </label>
                     <label class="form-check form-check-inline col-md-2">
-                        <input class="form-check-input" type="radio" name="gender" value="male">
+                        <input class="form-check-input" type="radio" name="user" value=" <%=userName%>">
                         <span class="form-check-label"> No </span>
                     
                 </label>
             </div>
             <br>
             <br>
-            <button type="submit">Submit</button>
+            <button class="btn btn-secondary"type="submit">Submit</button>
         </form>
     </div>
   
