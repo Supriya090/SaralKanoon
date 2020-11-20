@@ -14,16 +14,19 @@
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
     </head>
-    <body>
+    <body style="background:url('https://images.unsplash.com/photo-1535955565956-4a631184a821?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80')
+    no-repeat fixed;
+    background-size: cover;">
+        <%- include('partials/header') %>
         <div class="container signup-div">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" style="padding: 20px;">
                 <div class="col-md-6">
-                    <div class="card" style="border: 2px solid aqua; ">
+                    <div class="card" style="border: 2px solid purple; ">
                         <header class="card-header text-center" id="title" >
                             <h1><i class="fa fa-user-plus" aria-hidden="true"></i> SignUp</h1>
                         </header>
                         <%- include('partials/messages') %>
-                            <form style="padding: 20px;" method="POST" action="/signup">
+                            <form style="padding: 40px;" method="POST" action="/signup">
                                 <div class="form-row">
                                     <div class="col form-group">
                                         <label>Username </label>   
@@ -109,6 +112,7 @@
         </div> 
 <!--container end.//-->
 
-    <br><br>     
+    <br><br>   
+    <%- include('partials/footer') %>  
     </body>
 </html>
