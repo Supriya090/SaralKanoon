@@ -1,5 +1,5 @@
 .login-div {
-  border: 2px solid aqua;
+  border: 2px solid purple;
   text-align: center;
   margin-top: 30px;
   height: 500px;
@@ -11,5 +11,5 @@ h1 {
 .row {
   height: 90px;
   width: 396px;
-  background-color: paleturquoise;
+  background-color:rgba(172, 78, 172, 0.534);
 }

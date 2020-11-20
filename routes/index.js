@@ -6,8 +6,7 @@ let SafetyTips = require("../models/safety")
 let SingleCategory = require("../models/singleCategory")
 let Experience = require("../models/experiences")
 let SignUp = require("../models/signup")
-
-
+let CyberLaw = require("../models/cyberlaw");
 let SearchCard = require("../models/searchCards")
 let SexualAssault = require('../models/sexualAssault');
 
@@ -33,26 +32,57 @@ router.get('/add', function(req, res, next){
 
 // Search Card add code
 
+// router.post('/save', function(req, res){
+//   // books.push({...req.body, _id: `00${books.length + 1}`});
+//   const category = new SearchCard(req.body);
+//   category.tags.push("child abuse",
+//   "sexual assault",
+//   "child molestation",
+//   "assault",
+//   "sexual assault",
+//   "penalty for child abuse",
+//   "bad touch",
+//   "child harassment",
+//   "organization for child safety",
+//   "safety laws");
+//   console.log(category.description);
+//   let promise = category.save();
+//   promise.then(()=>{
+//       console.log("Card added");
+//       res.redirect('/');
+//   })
+// })
+
+
 router.post('/save', function(req, res){
-  // books.push({...req.body, _id: `00${books.length + 1}`});
-  const category = new SearchCard(req.body);
-  category.tags.push("child abuse",
-  "sexual assault",
-  "child molestation",
-  "assault",
-  "sexual assault",
-  "penalty for child abuse",
-  "bad touch",
-  "child harassment",
-  "organization for child safety",
-  "safety laws");
-  console.log(category.description);
-  let promise = category.save();
-  promise.then(()=>{
-      console.log("Card added");
-      res.redirect('/');
+  const category = new CyberLaw;
+  category.title = "Computer Fraud";
+  category.actName = "Electronic Transaction Act 2063, Chapter 9, Section 52";
+  category.image = "https://multichannelmerchant.com/wp-content/uploads/2016/03/ecommerce-fraud-arm-out-of-screen-feature.jpg";
+  category.definition.push({title:"Definitions"},{title: "Computer Fraud ", text:" is an act of obtaining benefit from the payment of any bill, balance amount of any one’s account, any inventory or ATM card in connivance of or otherwise by committing any fraud."});
+
+  category.lawText.push("What does the Law say?","If any person, with an intention to commit any fraud or any other illegal act, creates, publishes or otherwise provides digital signature certificate or acquires benefit from the payment of any bill, balance amount of any one’s account, any inventory or ATM card by committing any fraud, amount of the financial benefit so acquired shall be recovered from the offender and be given to the person concerned.", "Such an offender shall be liable to the punishment with a fine not exceeding one hundred thousand Rupees or with an imprisonment not exceeding two years or with both.");
+
+  category.filingComplaintText.push("Filing of Complaint");
+
+  category.limitation.push("Limitation");
+
+  // category.compensationText.push("Compensation to be Provided", "If a person is convicted of libeling another person or causing such libel, a reasonable compensation( considering the gravity of the offence, effect caused to the reputation of such person and the commission of libel by means of electronic or other means of mass communication) shall be ordered to be paid by the offender to the libeled person.","If a person is convicted of libeling a deceased, such compensation and litigation costs shall be ordered to be paid by the offender to the near successor to the deceased whose feeling was hurt.");
+
+  category.organization.push({title:"Organizations Working for this Purpose"},{title:"Cyber Bureau",link:"https://www.nepalpolice.gov.np/index.php/cyber-bureau?start=3"});
+    let promise = category.save();
+    promise.then(()=>{
+        console.log("Book added");
+        res.redirect('/cyber-law');
+    })
   })
-})
+
+  router.get('/cyber-law/:title', function(req, res, next){
+    CyberLaw.findOne({title: req.params.title}, function(err, cyberlaw){
+      res.render('cyberlaw',{title: 'Saral Kanoon', subTitle:'Law Made Easy', cyberlaw: cyberlaw});
+    });
+  });
+  
 
 //Sub Category Add code
 // router.post('/save', function(req, res){
@@ -89,9 +119,14 @@ router.get('/', async function(req, res, next) {
 
 
 // Get to Category Page
+// router.get('/categories', async function(req, res, next){
+//   let sexualAssaultCategories = await SexualAssault.find();
+//   res.render('categories',{title: 'Saral Kanoon', subTitle:'Law Made Easy', sexualAssaultCategoriesList: sexualAssaultCategories});
+// });
 router.get('/categories', async function(req, res, next){
   let sexualAssaultCategories = await SexualAssault.find();
-  res.render('categories',{title: 'Saral Kanoon', subTitle:'Law Made Easy', sexualAssaultCategoriesList: sexualAssaultCategories});
+  let cyberLawCategories = await CyberLaw.find();
+  res.render('categories',{title: 'Saral Kanoon', subTitle:'Law Made Easy', sexualAssaultCategoriesList: sexualAssaultCategories, cyberLawCategoryList: cyberLawCategories});
 });
 
 router.get('/single-category', async function(req, res, next){
