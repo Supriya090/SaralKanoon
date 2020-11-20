@@ -9,7 +9,11 @@
 
 </head>
 <body>
+  <%if(isLoggedIn){%>
+    <%- include('partials/loggedInHeader') %>
+  <%}else{%>  
     <%- include('partials/header') %>
+  <%}%>
     <div class="container expDiv"> 
         
         <!-- Search Button Section -->
@@ -39,6 +43,7 @@
                   <span class="badge badge-secondary"><%=experience.tag[i]%></span>
                 <%}%>
               </h6>
+              <h6>By:<%=experience.user%></h6>
             </div>
           </div>
     <% }) %>

@@ -9,7 +9,11 @@
     <title><%= title %></title>
 </head>
 <body> 
-  <%- include('partials/header') %>
+  <%if(isLoggedIn){%>
+    <%- include('partials/loggedInHeader') %>
+  <%}else{%>  
+    <%- include('partials/header') %>
+  <%}%>
   <div class="container">
     <!-- Sexual Offence -->
     <div id="SexualOffence">
@@ -51,16 +55,16 @@
     <div id="CyberCrimes">
         <h2 id="2C">Cyber Crime Laws</h2> <br>
         <div class="row" style="margin-bottom: 50px;">
-            <%for(let i =0; i <=2; i++){%>
+          <%cyberLawCategoryList.forEach(function(cyberLawCategory){%>
               <div class="col-md-4 col-sm-6 col-xs-12">
-                <a href="/" onclick="">     
+                <a href="/cyber-law/<%=cyberLawCategory.title%>" onclick="">     
                   <div class="category-tile">
-                        <img src="/images/rape.jpg" class="rounded float-left images" alt="rape"  >
-                        <span>Sexual Assault Laws</span>
+                        <img src="<%=cyberLawCategory.image%>" class="rounded float-left images" alt="<%=cyberLawCategory.title%>" >
+                        <span><%=cyberLawCategory.title%></span>
                       </div>
                     </a>
                   </div>
-                <%}%>
+                <%})%>
               </div>
           </div>
       </div> -->

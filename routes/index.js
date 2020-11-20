@@ -1,14 +1,44 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+var bcrypt = require('bcryptjs');
+var passport = require('passport')
 let Categories = require("../models/categories");
 let SafetyTips = require("../models/safety")
 let SingleCategory = require("../models/singleCategory")
 let Experience = require("../models/experiences")
-let SignUp = require("../models/signup")
 let CyberLaw = require("../models/cyberlaw");
+let User = require("../models/user")
 let SearchCard = require("../models/searchCards")
 let SexualAssault = require('../models/sexualAssault');
+
+const {ensureAuthenticated} = require("../config/auth");
+
+router.get('/login', function(req, res, next){
+  res.render('login',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
+});
+
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: '/addExperience',
+    failureRedirect: '/login',
+    failureFlash: true
+  })(req, res, next);
+});
+
+// Logout
+router.get('/logout', (req, res) => {
+  req.logout();
+  req.flash('success_msg', 'You are logged out');
+  res.redirect('/login');
+});
+
+
+router.get('/addExperience', ensureAuthenticated, function(req, res, next){
+  console.log(req.user);
+  console.log(req.isAuthenticated());
+  res.render('addExperience',{title: 'Saral Kanoon - Add Experience', userName: req.user.username});
+});
 
 //Posts User Experiences
 router.post('/postExperience', function(req, res){
@@ -31,145 +61,146 @@ router.get('/add', function(req, res, next){
 
 
 // Search Card add code
-
-// router.post('/save', function(req, res){
-//   // books.push({...req.body, _id: `00${books.length + 1}`});
-//   const category = new SearchCard(req.body);
-//   category.tags.push("child abuse",
-//   "sexual assault",
-//   "child molestation",
-//   "assault",
-//   "sexual assault",
-//   "penalty for child abuse",
-//   "bad touch",
-//   "child harassment",
-//   "organization for child safety",
-//   "safety laws");
-//   console.log(category.description);
-//   let promise = category.save();
-//   promise.then(()=>{
-//       console.log("Card added");
-//       res.redirect('/');
-//   })
-// })
-
-
 router.post('/save', function(req, res){
-  const category = new CyberLaw;
-  category.title = "Computer Fraud";
-  category.actName = "Electronic Transaction Act 2063, Chapter 9, Section 52";
-  category.image = "https://multichannelmerchant.com/wp-content/uploads/2016/03/ecommerce-fraud-arm-out-of-screen-feature.jpg";
-  category.definition.push({title:"Definitions"},{title: "Computer Fraud ", text:" is an act of obtaining benefit from the payment of any bill, balance amount of any one’s account, any inventory or ATM card in connivance of or otherwise by committing any fraud."});
-
-  category.lawText.push("What does the Law say?","If any person, with an intention to commit any fraud or any other illegal act, creates, publishes or otherwise provides digital signature certificate or acquires benefit from the payment of any bill, balance amount of any one’s account, any inventory or ATM card by committing any fraud, amount of the financial benefit so acquired shall be recovered from the offender and be given to the person concerned.", "Such an offender shall be liable to the punishment with a fine not exceeding one hundred thousand Rupees or with an imprisonment not exceeding two years or with both.");
-
-  category.filingComplaintText.push("Filing of Complaint");
-
-  category.limitation.push("Limitation");
-
-  // category.compensationText.push("Compensation to be Provided", "If a person is convicted of libeling another person or causing such libel, a reasonable compensation( considering the gravity of the offence, effect caused to the reputation of such person and the commission of libel by means of electronic or other means of mass communication) shall be ordered to be paid by the offender to the libeled person.","If a person is convicted of libeling a deceased, such compensation and litigation costs shall be ordered to be paid by the offender to the near successor to the deceased whose feeling was hurt.");
-
-  category.organization.push({title:"Organizations Working for this Purpose"},{title:"Cyber Bureau",link:"https://www.nepalpolice.gov.np/index.php/cyber-bureau?start=3"});
-    let promise = category.save();
-    promise.then(()=>{
-        console.log("Book added");
-        res.redirect('/cyber-law');
-    })
+  // books.push({...req.body, _id: `00${books.length + 1}`});
+  const category = new SearchCard(req.body);
+  category.tags.push("child abuse",
+  "sexual assault",
+  "child molestation",
+  "assault",
+  "sexual assault",
+  "penalty for child abuse",
+  "bad touch",
+  "child harassment",
+  "organization for child safety",
+  "safety laws");
+  console.log(category.description);
+  let promise = category.save();
+  promise.then(()=>{
+      console.log("Card added");
+      res.redirect('/');
   })
-
-  router.get('/cyber-law/:title', function(req, res, next){
-    CyberLaw.findOne({title: req.params.title}, function(err, cyberlaw){
-      res.render('cyberlaw',{title: 'Saral Kanoon', subTitle:'Law Made Easy', cyberlaw: cyberlaw});
-    });
-  });
-  
-
-//Sub Category Add code
-// router.post('/save', function(req, res){
-//   const category = new SexualAssault;
-//   category.title = "Bestiality";
-//   category.actName = "National Penal(Code) 2074, Act number 36, Part 1, Chapter 18, Section 227";
-//   category.image = "/images/bestiality.jpg";
-//   category.definition.push({title:"What is Bestiality?"},{title:"Bestiality", text:"refers to the sexual intercourse with the animals."})
-//   category.lawText.push("What does the Law say?","No person shall have, or cause to be had, sexual intercourse with an animal.");
-
-//   category.filingComplaintText.push("Filing of Complaint");
-
-//   category.punishmentText.push("Penalty for Bestiality","A person who commits bestiality shall be liable to the following sentence:","A sentence of imprisonment for a term not exceeding two years and a fine not exceeding twenty thousand rupees, if the person has committed, or caused to be committed, sexual intercourse with a cow. ","A sentence of imprisonment for a term not exceeding one year and a fine not exceeding ten thousand rupees, in the case of sexual intercourse with any other animal.");
-
-//   category.compensationText.push("Compensation to be Provided","No compensation shall be provided for this offence.");
-
-//   category.limitation.push("Limitation to File a Report","The complaint against the perpetrator should be filed within three months from the date of commission of the offence.");
-  
-//   let promise = category.save();
-//   promise.then(()=>{
-//       console.log("sub catergories added");
-//       console.log("Category added");
-//       res.redirect('/categories');
-//   })
-// })
-
+})
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
+  console.log(req.isAuthenticated());
   let categories = await Categories.find();
   let safetyTips = await SafetyTips.find();
-    res.render('index', { title: 'Saral Kanoon', subTitle:'Law Made Easy', categoryList: categories, safetyTipList: safetyTips});
+    res.render('index', { title: 'Saral Kanoon',subTitle:'Law Made Easy', categoryList: categories, safetyTipList: safetyTips, isLoggedIn: req.isAuthenticated()});
 });
 
 
 // Get to Category Page
-// router.get('/categories', async function(req, res, next){
-//   let sexualAssaultCategories = await SexualAssault.find();
-//   res.render('categories',{title: 'Saral Kanoon', subTitle:'Law Made Easy', sexualAssaultCategoriesList: sexualAssaultCategories});
-// });
 router.get('/categories', async function(req, res, next){
   let sexualAssaultCategories = await SexualAssault.find();
   let cyberLawCategories = await CyberLaw.find();
-  res.render('categories',{title: 'Saral Kanoon', subTitle:'Law Made Easy', sexualAssaultCategoriesList: sexualAssaultCategories, cyberLawCategoryList: cyberLawCategories});
+  res.render('categories',{title: 'Saral Kanoon', subTitle:'Law Made Easy', sexualAssaultCategoriesList: sexualAssaultCategories, cyberLawCategoryList: cyberLawCategories, isLoggedIn: req.isAuthenticated()});
 });
 
 router.get('/single-category', async function(req, res, next){
   let singleCategory = await SingleCategory.find();
-  res.render('singleCategory',{title: 'Saral Kanoon', subTitle:'Law Made Easy', singleCategory: singleCategory[0]});
+  res.render('singleCategory',{title: 'Saral Kanoon', subTitle:'Law Made Easy', singleCategory: singleCategory[0], isLoggedIn: req.isAuthenticated()});
 });
 
 router.get('/sexual-assault/:title', function(req, res, next){
   SexualAssault.findOne({title: req.params.title}, function(err, sexualAssault){
-    res.render('sexualAssault',{title: 'Saral Kanoon', subTitle:'Law Made Easy', sexualAssault: sexualAssault});
+    res.render('sexualAssault',{title: 'Saral Kanoon', subTitle:'Law Made Easy', sexualAssault: sexualAssault, isLoggedIn: req.isAuthenticated()});
   });
 });
 
-router.get('/login', function(req, res, next){
-  res.render('login',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
+router.get('/cyber-law/:title', function(req, res, next){
+  CyberLaw.findOne({title: req.params.title}, function(err, cyberlaw){
+    res.render('cyberlaw',{title: 'Saral Kanoon', subTitle:'Law Made Easy', cyberlaw: cyberlaw, isLoggedIn: req.isAuthenticated()});
+  });
 });
 
 router.get('/aboutus', function(req, res, next){
-  res.render('aboutus',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
-});
-router.get('/signup', function(req, res, next){
-  res.render('signup',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
+  res.render('aboutus',{title: 'Saral Kanoon', subTitle:'Law Made Easy', isLoggedIn: req.isAuthenticated()});
 });
 
+router.get('/signup', function(req, res, next){
+  res.render('signup',{title: 'Saral Kanoon'});
+});
+
+router.post('/signup',function(req,res){
+  console.log(req.body);
+  const {username,email, gender, password, password2} = req.body;
+  let errors = [];
+
+  //Check required fields
+  if(!username || !email || !password || !password2|| !gender){
+    errors.push({msg:"Please fill in all fields"});
+  }
+
+  //Check passwords match
+  if(password !== password2){
+    errors.push({msg:"Passwords do not match"});
+  }
+  //Check pass length
+  if(password.length < 6){
+    errors.push({msg:"Password should be at least 6 characters"});
+  }  
+
+  if(errors.length > 0){
+    res.render('signup',{
+      errors,
+      username,
+      email,
+      gender,
+      password,
+      password2
+    });
+  }else{
+    User.findOne({ email: email }).then(user => {
+      if (user) {
+        errors.push({ msg: 'Email already exists' });
+        res.render('signup', {
+          errors,
+          username,
+          email,
+          password,
+          password2
+        });
+      } else {
+        const newUser = new User({
+          username,
+          email,
+          gender,
+          password
+        });
+        // console.log(newUser)
+        // res.send('hello');
+
+        //Hash Password
+        bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(newUser.password, salt, (err, hash) => {
+            if (err) throw err;
+            newUser.password = hash;
+            newUser
+              .save()
+              .then(user => {
+                req.flash(
+                  'success_msg',
+                  'You are now registered and can log in'
+                );
+                res.redirect('/login');
+              })
+              .catch(err => console.log(err));
+          });
+        });
+
+      }
+    })
+  }
+})
 router.get('/experiences', async function(req, res, next){
   let experience = await Experience.find();
-  res.render('experiences',{title: 'Saral Kanoon', subTitle:'Law Made Easy', experienceList: experience});
+  res.render('experiences',{title: 'Saral Kanoon', experienceList: experience, isLoggedIn: req.isAuthenticated()});
 });
 
 
-router.get('/addExperience', function(req, res, next){
-  res.render('addExperience',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
-});
 
-// router.get('/search', async function(req, res, next){
-//   var regex = new RegExp(req.query.value,"i");
-//   console.log(regex);
-//   let searchCards = await SearchCard.find({tags: regex});
-//   if (searchCards.length == 0){
-//     console.log("Sorry, no result found! Try using another keyword.")
-//   }
-//   res.render('searchCards',{title: 'Saral Kanoon', subTitle:'Law Made Easy', searchCardList: searchCards});
-// });
 
 // final search wala
 
@@ -189,7 +220,7 @@ router.get('/search', async function(req, res, next){
   if (uniqueSearchCards.length == 0){
     console.log("Sorry, no result found! Try using another keyword.")
   }
-  res.render('searchCards',{title: 'Saral Kanoon', subTitle:'Law Made Easy', searchCardList: uniqueSearchCards});
+  res.render('searchCards',{title: 'Saral Kanoon', isLoggedIn: req.isAuthenticated(), searchCardList: uniqueSearchCards});
 });
 
 router.get('/searchExp', async function(req, res, next){
@@ -199,14 +230,14 @@ router.get('/searchExp', async function(req, res, next){
   if (searchExperience.length == 0){
     console.log("Sorry, no result found! Try using another keyword.")
   }
-  res.render('experiences',{title: 'Saral Kanoon', subTitle:'Law Made Easy', experienceList: searchExperience});
+  res.render('experiences',{title: 'Saral Kanoon', isLoggedIn: req.isAuthenticated(), experienceList: searchExperience});
 });
 
 router.get('/safetyTips0',function(req,res,next){
   request("https://supriya090.github.io/SaralKanoonAPIs/self-defense.json", function (error, response, body) {
   if (!error && response.statusCode == 200) {
      var selfDefenseTechniques = JSON.parse(body);
-    res.render('safetyTips0',{title: 'Saral Kanoon', subTitle:'Law Made Easy', selfDefenseTechniqueList: selfDefenseTechniques});
+    res.render('safetyTips0',{title: 'Saral Kanoon', isLoggedIn: req.isAuthenticated(), selfDefenseTechniqueList: selfDefenseTechniques});
     }
   })
 })
@@ -215,12 +246,9 @@ router.get('/safetyTips1',function(req,res,next){
   request("https://supriya090.github.io/SaralKanoonAPIs/safety-equip.json", function (error, response, body) {
   if (!error && response.statusCode == 200) {
      var safetyEquipment = JSON.parse(body);
-     res.render('safetyTips1',{title: 'Saral Kanoon', subTitle:'Law Made Easy', safetyEquipmentList: safetyEquipment});
+     res.render('safetyTips1',{title: 'Saral Kanoon', isLoggedIn: req.isAuthenticated(), safetyEquipmentList: safetyEquipment});
     }
   })
 })
-
-
-
 
 module.exports = router;

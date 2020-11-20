@@ -12,7 +12,11 @@
 <body  style="background:url('https://images.unsplash.com/photo-1535955565956-4a631184a821?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80')
 no-repeat fixed;
 background-size: cover;"> 
+ <%if(isLoggedIn){%>
+  <%- include('partials/loggedInHeader') %>
+<%}else{%>  
   <%- include('partials/header') %>
+<%}%>
   <div class="container" style="margin:auto; text-align: center; margin-top: 10%; margin-bottom: 10%; border:2px solid black; padding:30px 0 30px 0; ">
           <h3 id ="title"><%=title%></h3><p id= "subTitle"><%=subTitle%></p>
           <p>Find simplified version of laws related to safety.<br>You can also post your experiences and read the ones written by others.</p> 
