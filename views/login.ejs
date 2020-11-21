@@ -18,7 +18,7 @@
                 <h1><i class="fa fa-lock" aria-hidden="true"></i> Login</h1>
             </div><br /><br />
             <%- include('partials/messages') %>
-            <form method="POST" action="/login">
+            <form method="POST" action="/users/login">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
@@ -38,7 +38,7 @@
         </form> 
                 <br /> <center><div style="border:1px solid purple;height:1px;width:300px;"></div></center><br />
             <div class="footer">
-                <p>Don't Have an Account? <br><a href="./signup">Sign Up Here</a></p>
+                <p>Don't Have an Account? <br><a href="/users/signup">Sign Up Here</a></p>
             </div>
         </div>
         <%- include('partials/footer') %>

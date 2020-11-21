@@ -1,38 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var bcrypt = require('bcryptjs');
-var passport = require('passport')
 let Categories = require("../models/categories");
 let SafetyTips = require("../models/safety")
 let SingleCategory = require("../models/singleCategory")
 let Experience = require("../models/experiences")
 let CyberLaw = require("../models/cyberlaw");
-let User = require("../models/user")
 let SearchCard = require("../models/searchCards")
 let SexualAssault = require('../models/sexualAssault');
 
 const {ensureAuthenticated} = require("../config/auth");
-
-router.get('/login', function(req, res, next){
-  res.render('login',{title: 'Saral Kanoon', subTitle:'Law Made Easy'});
-});
-
-router.post('/login', (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/addExperience',
-    failureRedirect: '/login',
-    failureFlash: true
-  })(req, res, next);
-});
-
-// Logout
-router.get('/logout', (req, res) => {
-  req.logout();
-  req.flash('success_msg', 'You are logged out');
-  res.redirect('/login');
-});
-
 
 router.get('/addExperience', ensureAuthenticated, function(req, res, next){
   console.log(req.user);
@@ -111,7 +88,7 @@ router.get('/sexual-assault/:title', function(req, res, next){
 
 router.get('/cyber-law/:title', function(req, res, next){
   CyberLaw.findOne({title: req.params.title}, function(err, cyberlaw){
-    res.render('cyberlaw',{title: 'Saral Kanoon', subTitle:'Law Made Easy', cyberlaw: cyberlaw});
+    res.render('cyberlaw',{title: 'Saral Kanoon', subTitle:'Law Made Easy', cyberlaw: cyberlaw, isLoggedIn: req.isAuthenticated()});
   });
 });
 
@@ -119,81 +96,6 @@ router.get('/aboutus', function(req, res, next){
   res.render('aboutus',{title: 'Saral Kanoon', subTitle:'Law Made Easy', isLoggedIn: req.isAuthenticated()});
 });
 
-router.get('/signup', function(req, res, next){
-  res.render('signup',{title: 'Saral Kanoon'});
-});
-
-router.post('/signup',function(req,res){
-  console.log(req.body);
-  const {username,email, gender, password, password2} = req.body;
-  let errors = [];
-
-  //Check required fields
-  if(!username || !email || !password || !password2|| !gender){
-    errors.push({msg:"Please fill in all fields"});
-  }
-
-  //Check passwords match
-  if(password !== password2){
-    errors.push({msg:"Passwords do not match"});
-  }
-  //Check pass length
-  if(password.length < 6){
-    errors.push({msg:"Password should be at least 6 characters"});
-  }  
-
-  if(errors.length > 0){
-    res.render('signup',{
-      errors,
-      username,
-      email,
-      gender,
-      password,
-      password2
-    });
-  }else{
-    User.findOne({ email: email }).then(user => {
-      if (user) {
-        errors.push({ msg: 'Email already exists' });
-        res.render('signup', {
-          errors,
-          username,
-          email,
-          password,
-          password2
-        });
-      } else {
-        const newUser = new User({
-          username,
-          email,
-          gender,
-          password
-        });
-        // console.log(newUser)
-        // res.send('hello');
-
-        //Hash Password
-        bcrypt.genSalt(10, (err, salt) => {
-          bcrypt.hash(newUser.password, salt, (err, hash) => {
-            if (err) throw err;
-            newUser.password = hash;
-            newUser
-              .save()
-              .then(user => {
-                req.flash(
-                  'success_msg',
-                  'You are now registered and can log in'
-                );
-                res.redirect('/login');
-              })
-              .catch(err => console.log(err));
-          });
-        });
-
-      }
-    })
-  }
-})
 router.get('/experiences', async function(req, res, next){
   let experience = await Experience.find();
   res.render('experiences',{title: 'Saral Kanoon', experienceList: experience, isLoggedIn: req.isAuthenticated()});

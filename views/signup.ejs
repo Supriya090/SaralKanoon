@@ -26,7 +26,7 @@
                             <h1><i class="fa fa-user-plus" aria-hidden="true"></i> SignUp</h1>
                         </header>
                         <%- include('partials/messages') %>
-                            <form style="padding: 40px;" method="POST" action="/signup">
+                            <form style="padding: 40px;" method="POST" action="/users/signup">
                                 <div class="form-row">
                                     <div class="col form-group">
                                         <label>Username </label>   
@@ -105,7 +105,7 @@
                                     <center> <button id="Submitbutton" type="submit" class=" btn btn-primary btn-block" > Sign Up </button></center>
                                 </div> <!-- form-group// -->      
                             </form>
-                        <div class="border-top card-body text-center">Have an account? <a href="./login">Log In</a></div>
+                        <div class="border-top card-body text-center">Have an account? <a href="/users/login">Log In</a></div>
                     </div> <!-- card.// -->
                 </div> <!-- col.//-->
             </div> <!-- row.//-->
