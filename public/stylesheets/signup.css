@@ -1,7 +1,8 @@
 #title {
-  background-color: rgba(172, 78, 172, 0.534);
+  background-color:rgba(172, 78, 172, 0.534);
 }
 #Submitbutton {
+  /* background-color: #5cb85c; */
   background-color: rebeccapurple;
 
   width: 150px;
@@ -11,3 +12,4 @@
   padding-top: 30px;
   margin-top: 150px;
 }
+

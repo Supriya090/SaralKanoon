@@ -17,15 +17,5 @@ h1 {
 .row {
   height: 90px;
   width: 396px;
-  background-color: rgba(172, 78, 172, 0.534);
-}
-
-.loginBtn {
-  background-color: rebeccapurple;
-  border: 0px;
-}
-
-.gmailLoginBtn {
-  background-color: rgba(125, 63, 184, 0.726);
-  border: 0px;
+  background-color:rgba(172, 78, 172, 0.534);
 }
