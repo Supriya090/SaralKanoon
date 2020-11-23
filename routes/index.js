@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+
+//Databases
 let Categories = require("../models/categories");
 let SafetyTips = require("../models/safety")
 let SingleCategory = require("../models/singleCategory")
@@ -9,35 +11,18 @@ let CyberLaw = require("../models/cyberlaw");
 let SearchCard = require("../models/searchCards")
 let SexualAssault = require('../models/sexualAssault');
 
+//Authentication
 const {ensureAuthenticated} = require("../config/auth");
 
-router.get('/addExperience', ensureAuthenticated, function(req, res, next){
-  console.log(req.user);
-  console.log(req.isAuthenticated());
-  res.render('addExperience',{title: 'Saral Kanoon - Add Experience', userName: req.user.username});
-});
 
-//Posts User Experiences
-router.post('/postExperience', function(req, res){
-  const experience = new Experience(req.body);
-  console.log(experience);
-  let promise = experience.save();
-  promise.then(() => {
-      console.log('experience posted');
-      res.redirect('/experiences');
-  })
- 
-});
-
-
-router.get('/add', function(req, res, next){
+//Adding Search Cards
+router.get('/add', function(req, res){
   res.render('test', {
-      title: 'Add book',
+      title: 'Add Search Cards',
   });
 })
 
-
-// Search Card add code
+//Saving Search Cards
 router.post('/save', function(req, res){
   // books.push({...req.body, _id: `00${books.length + 1}`});
   const category = new SearchCard(req.body);
@@ -59,54 +44,45 @@ router.post('/save', function(req, res){
   })
 })
 
-/* GET home page. */
-router.get('/', async function(req, res, next) {
+//Gets Homepage
+router.get('/', async function(req, res) {
   console.log(req.isAuthenticated());
   let categories = await Categories.find();
   let safetyTips = await SafetyTips.find();
-    res.render('index', { title: 'Saral Kanoon',subTitle:'Law Made Easy', categoryList: categories, safetyTipList: safetyTips, isLoggedIn: req.isAuthenticated()});
+    res.render('index', { title: 'Saral Kanoon', categoryList: categories, safetyTipList: safetyTips, isLoggedIn: req.isAuthenticated()});
 });
 
 
-// Get to Category Page
-router.get('/categories', async function(req, res, next){
+// Gets Category Page
+router.get('/categories', async function(req, res){
   let sexualAssaultCategories = await SexualAssault.find();
   let cyberLawCategories = await CyberLaw.find();
-  res.render('categories',{title: 'Saral Kanoon', subTitle:'Law Made Easy', sexualAssaultCategoriesList: sexualAssaultCategories, cyberLawCategoryList: cyberLawCategories, isLoggedIn: req.isAuthenticated()});
+  res.render('categories',{title: 'Saral Kanoon - Category Page', sexualAssaultCategoriesList: sexualAssaultCategories, cyberLawCategoryList: cyberLawCategories, isLoggedIn: req.isAuthenticated()});
 });
 
-router.get('/single-category', async function(req, res, next){
+//Gets Domestic Violence Law
+router.get('/single-category', async function(req, res){
   let singleCategory = await SingleCategory.find();
-  res.render('singleCategory',{title: 'Saral Kanoon', subTitle:'Law Made Easy', singleCategory: singleCategory[0], isLoggedIn: req.isAuthenticated()});
+  res.render('singleCategory',{title: 'Saral Kanoon - Domestic Violence Laws', singleCategory: singleCategory[0], isLoggedIn: req.isAuthenticated()});
 });
 
-router.get('/sexual-assault/:title', function(req, res, next){
+//Gets Sexual Assault Laws
+router.get('/sexual-assault/:title', function(req, res){
   SexualAssault.findOne({title: req.params.title}, function(err, sexualAssault){
-    res.render('sexualAssault',{title: 'Saral Kanoon', subTitle:'Law Made Easy', sexualAssault: sexualAssault, isLoggedIn: req.isAuthenticated()});
+    res.render('sexualAssault',{title: 'Saral Kanoon - Sexual Assault Laws', sexualAssault: sexualAssault, isLoggedIn: req.isAuthenticated()});
   });
 });
 
-router.get('/cyber-law/:title', function(req, res, next){
+//Gets Cyber Laws
+router.get('/cyber-law/:title', function(req, res){
   CyberLaw.findOne({title: req.params.title}, function(err, cyberlaw){
-    res.render('cyberlaw',{title: 'Saral Kanoon', subTitle:'Law Made Easy', cyberlaw: cyberlaw, isLoggedIn: req.isAuthenticated()});
+    res.render('cyberlaw',{title: 'Saral Kanoon - Cyber Laws', cyberlaw: cyberlaw, isLoggedIn: req.isAuthenticated()});
   });
 });
 
-router.get('/aboutus', function(req, res, next){
-  res.render('aboutus',{title: 'Saral Kanoon', subTitle:'Law Made Easy', isLoggedIn: req.isAuthenticated()});
-});
-
-router.get('/experiences', async function(req, res, next){
-  let experience = await Experience.find();
-  res.render('experiences',{title: 'Saral Kanoon', experienceList: experience, isLoggedIn: req.isAuthenticated()});
-});
-
-
-
-
-// final search wala
-
-router.get('/search', async function(req, res, next){
+//Gets Law Search Cards
+/* Refining to be done */
+router.get('/search', async function(req, res){
   let searchArray = req.query.value.split(" ");
   var searchCards = [];
   console.log(req.query.value.split(" "));
@@ -122,35 +98,68 @@ router.get('/search', async function(req, res, next){
   if (uniqueSearchCards.length == 0){
     console.log("Sorry, no result found! Try using another keyword.")
   }
-  res.render('searchCards',{title: 'Saral Kanoon', isLoggedIn: req.isAuthenticated(), searchCardList: uniqueSearchCards});
+  res.render('searchCards',{title: 'Saral Kanoon - Search Cards', isLoggedIn: req.isAuthenticated(), searchCardList: uniqueSearchCards});
 });
 
-router.get('/searchExp', async function(req, res, next){
+//Gets Self Defense Techniques
+router.get('/safetyTips0',function(req,res){
+  request("https://supriya090.github.io/SaralKanoonAPIs/self-defense.json", function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+     var selfDefenseTechniques = JSON.parse(body);
+    res.render('safetyTips0',{title: 'Saral Kanoon - Self Defense Techniques', isLoggedIn: req.isAuthenticated(), selfDefenseTechniqueList: selfDefenseTechniques});
+    }
+  })
+})
+
+//Gets Self Defense Equipments
+router.get('/safetyTips1',function(req,res){
+  request("https://supriya090.github.io/SaralKanoonAPIs/safety-equip.json", function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+     var safetyEquipment = JSON.parse(body);
+     res.render('safetyTips1',{title: 'Saral Kanoon - Self Defense Equipments', isLoggedIn: req.isAuthenticated(), safetyEquipmentList: safetyEquipment});
+    }
+  })
+})
+
+//Gets User Experiences
+router.get('/experiences', async function(req, res){
+  let experience = await Experience.find();
+  res.render('experiences',{title: 'Saral Kanoon - Read User Experiences', experienceList: experience, isLoggedIn: req.isAuthenticated()});
+});
+
+//Searches User Experiences by Tag
+router.get('/searchExp', async function(req, res){
   var regex = new RegExp(req.query.value,"i");
   console.log(regex);
   let searchExperience = await Experience.find({tag: regex});
   if (searchExperience.length == 0){
     console.log("Sorry, no result found! Try using another keyword.")
   }
-  res.render('experiences',{title: 'Saral Kanoon', isLoggedIn: req.isAuthenticated(), experienceList: searchExperience});
+  res.render('experiences',{title: 'Saral Kanoon - Read User Experiences', isLoggedIn: req.isAuthenticated(), experienceList: searchExperience});
 });
 
-router.get('/safetyTips0',function(req,res,next){
-  request("https://supriya090.github.io/SaralKanoonAPIs/self-defense.json", function (error, response, body) {
-  if (!error && response.statusCode == 200) {
-     var selfDefenseTechniques = JSON.parse(body);
-    res.render('safetyTips0',{title: 'Saral Kanoon', isLoggedIn: req.isAuthenticated(), selfDefenseTechniqueList: selfDefenseTechniques});
-    }
-  })
-})
+//Gets User Add Experiences Page
+router.get('/addExperience', ensureAuthenticated, function(req, res, next){
+  console.log(req.user);
+  console.log(req.isAuthenticated());
+  res.render('addExperience',{title: 'Saral Kanoon - Add Experience', userName: req.user.username});
+});
 
-router.get('/safetyTips1',function(req,res,next){
-  request("https://supriya090.github.io/SaralKanoonAPIs/safety-equip.json", function (error, response, body) {
-  if (!error && response.statusCode == 200) {
-     var safetyEquipment = JSON.parse(body);
-     res.render('safetyTips1',{title: 'Saral Kanoon', isLoggedIn: req.isAuthenticated(), safetyEquipmentList: safetyEquipment});
-    }
+//Posts User Experiences
+router.post('/postExperience', function(req, res){
+  const experience = new Experience(req.body);
+  console.log(experience);
+  let promise = experience.save();
+  promise.then(() => {
+      console.log('experience posted');
+      res.redirect('/experiences');
   })
-})
+ 
+});
+
+//Gets About Us Page
+router.get('/aboutus', function(req, res){
+  res.render('aboutus',{title: 'Saral Kanoon - About Us', subTitle:'Law Made Easy', isLoggedIn: req.isAuthenticated()});
+});
 
 module.exports = router;

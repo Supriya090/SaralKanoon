@@ -79,13 +79,12 @@ router.post('/signup',function(req,res){
               .catch(err => console.log(err));
           });
         });
-
       }
     })
   }
 })
 
-
+//Logs the User In
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/addExperience',
